@@ -1,0 +1,6 @@
+{
+  "records": [
+    {"date":"2026-10-03","coin":"BTC","price":84630,"trend":"Neutral bis leicht bearish unter 84.760 (Heatmap)","support":"84.465–84.515 (Heatmap)","resistance":"84.635–84.760 (Heatmap)","longZone":"84.250–84.450","shortZone":"84.900–85.100","breakout":85250,"breakdown":83800,"targets":"Long: 85.600 / 86.000 / 87.200; Short: 83.100 / 82.900","clusters":"Oberhalb: 92.258 (261,6 Mio. USD); unterhalb: 75.886 (237,2 Mio. USD)","dominance":0.63},
+    {"date":"2026-10-03","coin":"XRP","price":1.4814,"trend":"Bearish unter 1,50 (Heatmap)","support":"1,462–1,474 (Heatmap)","resistance":"1,4866–1,4991 (Heatmap)","longZone":"1,45–1,47","shortZone":"1,50–1,53","breakout":1.55,"breakdown":1.44,"targets":"Long: 1,60 / 1,68; Short: 1,39 / 1,32","clusters":"Oberhalb: 1,5676 (13,3 Mio. USD); unterhalb: 1,4306 (17,0 Mio. USD)","dominance":0.77}
+  ]
+}
