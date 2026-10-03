@@ -38,11 +38,21 @@ def build():
         body += '<tr data-coin="'+row[1]+'">'+''.join('<'+('th scope="row"' if i==1 else 'td')+' data-label="'+h+'">'+html.escape(str(v))+'</'+('th' if i==1 else 'td')+'>' for i,(h,v) in enumerate(zip(HEADERS,row)))+'</tr>'
     body += '</tbody></table></div></section><section class="section card"><h3>Datenstand &amp; Quellen</h3><p class="lead muted">'+NOTE+'</p><div class="actions"><a class="btn secondary" href="btc.html">BTC-Quellen</a><a class="btn secondary" href="xrp.html">XRP-Quellen</a><a class="btn secondary" href="archiv.html">Historie öffnen</a></div></section><div class="footer">Liquidation-Heatmaps zeigen modellierte Zonen. Keine Anlageberatung.</div></main><script src="journal.js" defer></script></body></html>'
     (ROOT/'journal.html').write_text(prefix+body)
+    reference_path = ROOT/'excel-reference.html'
+    if reference_path.exists():
+        reference = reference_path.read_text().replace('id="excel-original"', 'id="journal"', 1)
+        reference_block = '<!-- EXCEL REFERENCE START -->' + reference + '<!-- EXCEL REFERENCE END -->'
+        journal_page = prefix + body.replace('<main class="shell">', '<main class="shell">' + reference_block, 1)
+        if 'href="excel-reference.css' not in journal_page:
+            journal_page = journal_page.replace('</head>', '<link rel="stylesheet" href="excel-reference.css?v=20261003-template"></head>')
+        journal_page = journal_page.replace('</body>', '<script src="excel-reference.js?v=20261003-template" defer></script></body>')
+        (ROOT/'journal.html').write_text(journal_page)
     # Keep the complete journal on the chart dashboard in sync with daily data.
     index_path = ROOT/'index.html'
     index = index_path.read_text()
     embedded = body.split('<main class="shell">', 1)[1].split('<div class="footer">', 1)[0]
-    embedded = embedded.replace('<section class="section card">', '<section id="journal" class="section card" style="scroll-margin-top:150px">', 1)
+    anchor = 'daily-journal' if reference_path.exists() else 'journal'
+    embedded = embedded.replace('<section class="section card">', f'<section id="{anchor}" class="section card" style="scroll-margin-top:150px">', 1)
     block = '<!-- JOURNAL START -->\n' + embedded + '\n<!-- JOURNAL END -->'
     if '<!-- JOURNAL START -->' in index:
         index = re.sub(r'<!-- JOURNAL START -->.*?<!-- JOURNAL END -->', lambda _: block, index, flags=re.S)
