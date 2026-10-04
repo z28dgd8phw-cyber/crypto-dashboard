@@ -11,7 +11,7 @@ NOTE = 'Kurs, Einstiegszonen, Breakout, Breakdown und Ziele: bestehende Tagessei
 
 def number(n):
     if n is None: return 'Nicht verfügbar'
-    return (f'{n:,.0f}' if n >= 100 else f'{n:.4f}'.rstrip('0').rstrip('.')).replace(',', 'X').replace('.', ',').replace('X', '.')
+    return (f'{n:,.1f}' if n >= 100 else f'{n:.4f}'.rstrip('0').rstrip('.')).replace(',', 'X').replace('.', ',').replace('X', '.')
 
 def rows(records):
     keys = [(r['date'], r['coin']) for r in records]
@@ -21,6 +21,7 @@ def rows(records):
     for r in sorted(records, key=lambda r: (r['date'], r['coin']), reverse=True):
         prior = (datetime.date.fromisoformat(r['date']) - datetime.timedelta(days=1)).isoformat()
         prev = next((p for p in records if p['date'] == prior and p['coin'] == r['coin']), None)
+        if r.get('previousClose') is not None: prev = {'price': r['previousClose']}
         delta = 'Nicht verfügbar' if r['price'] is None or (prev and prev['price'] is None) else ('Kein Vortag' if prev is None or prev['price'] <= 0 else f"{(r['price']/prev['price']-1)*100:+.2f} %".replace('.', ','))
         result.append([datetime.date.fromisoformat(r['date']).strftime('%d.%m.%Y'), r['coin'], number(r['price']), r['trend'], r['support'], r['resistance'], r['longZone'], r['shortZone'], ('> ' if r['breakout'] is not None else '') + number(r['breakout']), ('< ' if r['breakdown'] is not None else '') + number(r['breakdown']), r['targets'], r['clusters'], 'Nicht verfügbar' if r['dominance'] is None else (f"{r['dominance']:.0%} unterhalb" if isinstance(r['dominance'], (int,float)) else r['dominance']), delta])
     return result
