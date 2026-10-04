@@ -17,3 +17,7 @@ Die Werte vom 03.10.2026 stammen aus den bestehenden HTML-Tagesseiten und Chartg
 Vor jedem weiteren Tagesupdate die bisherigen HTML-Seiten und vier SVG-Grafiken unter `archive/YYYY-MM-DD/` sichern, sofern noch nicht vorhanden. Relative Links zu globalem CSS und Downloads auf `../../` anpassen. Bereits archivierte Tagesstände nicht überschreiben. Die Historienseite auf den gesicherten Tagesstand verlinken.
 
 Ein Push auf `main` veröffentlicht den eingecheckten Stand durch den vorhandenen GitHub-Pages-Workflow.
+
+## Veröffentlichung prüfen
+
+Ein gestarteter Analyseauftrag ist noch keine bestätigte Veröffentlichung. Ein Tagesupdate gilt erst dann als veröffentlicht, wenn der Commit auf `main` vorhanden ist, der GitHub-Pages-Workflow erfolgreich abgeschlossen wurde und die öffentliche Startseite sowie BTC-/XRP-Seiten das aktuelle Datum zeigen. PDF und Excel müssen denselben Tagesstand enthalten. Nicht verfügbare Liquidationsdaten ausdrücklich kennzeichnen; keine Preiscluster schätzen oder erfinden.
