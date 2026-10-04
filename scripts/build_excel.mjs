@@ -1,7 +1,7 @@
 import fs from 'node:fs/promises';
 import {Workbook,SpreadsheetFile} from '@oai/artifact-tool';
 const root = new URL('../', import.meta.url);
-const {records} = JSON.parse(await fs.readFile(new URL('data/journal.json',root),'utf8'));
+const {records,dailyStatus} = JSON.parse(await fs.readFile(new URL('data/journal.json',root),'utf8'));
 const latest = records.map(r=>r.date).sort().at(-1);
 const wb=Workbook.create();
 const s=wb.worksheets.add('Journal'); s.showGridLines=false;
@@ -13,7 +13,7 @@ const selected=records.filter(r=>r.date===latest).sort((a,b)=>a.coin.localeCompa
 const data=selected.map(r=>{
   const previousDate=new Date(r.date+'T12:00:00Z');previousDate.setUTCDate(previousDate.getUTCDate()-1);
   const prior=records.find(p=>p.coin===r.coin&&p.date===previousDate.toISOString().slice(0,10));
-  return [new Date(r.date+'T00:00:00Z'),r.coin,r.price,r.trend,r.support,r.resistance,r.longZone,r.shortZone,r.breakout,r.breakdown,r.targets,r.clusters,r.dominance,prior&&prior.price>0?r.price/prior.price-1:'Kein Vortag'];
+  return [new Date(r.date+'T00:00:00Z'),r.coin,r.price??'Nicht verfügbar',r.trend,r.support,r.resistance,r.longZone,r.shortZone,r.breakout??'Nicht verfügbar',r.breakdown??'Nicht verfügbar',r.targets,r.clusters,r.dominance??'Nicht verfügbar',r.price===null||prior?.price===null?'Nicht verfügbar':prior&&prior.price>0?r.price/prior.price-1:'Kein Vortag'];
 });
 s.getRange('A6:N'+(5+data.length)).values=data;
 s.getRange('A5:N7').format.font={name:'Arial',size:11};
@@ -30,9 +30,8 @@ s.getRange('I6:J7').setNumberFormat('#,##0.0000');
 s.getRange('M6:N7').setNumberFormat('0.00%');
 s.getRange('C6').setNumberFormat('#,##0');s.getRange('I6:J6').setNumberFormat('#,##0');
 s.tables.add('A5:N7',true,'DailyJournal');s.getRange('A6:A7').setNumberFormat('dd.mm.yyyy');s.freezePanes.freezeRows(5);s.freezePanes.freezeColumns(2);
-s.getRange('A9').values=[['Kurs/Zonen/Ziele: Tagesseiten. Trend/Support/Widerstand/Cluster: Heatmap, 11:00 Uhr. Unterschiedliche Marken je Ansicht.']];
-s.getRange('A10').values=[['Kein Vortag: kein Datensatz vom vorherigen Kalendertag vorhanden. Keine Live-Kurse.']];
-s.getRange('A12').values=[['Quelle: https://z28dgd8phw-cyber.github.io/crypto-dashboard/ (btc.html, xrp.html, journal.html und Heatmap-Grafiken)']];
+s.getRange('A9:N11').merge();s.getRange('A9').values=[[dailyStatus?.note??'Keine Live-Kurse.']];s.getRange('A9:N11').format.wrapText=true;
+s.getRange('A13:N16').merge();s.getRange('A13').values=[[(dailyStatus?.sources??[]).join('\n')]];s.getRange('A13:N16').format.wrapText=true;
 wb.recalculate();
 console.log((await wb.inspect({kind:'table',range:'Journal!A5:N7',include:'values,formulas',tableMaxRows:3,tableMaxCols:14,maxChars:2500})).ndjson);
 for(const [range,name] of [['A2:G7','left'],['H5:N7','right']]){

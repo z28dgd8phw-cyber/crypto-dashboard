@@ -32,23 +32,44 @@
     },
     {
       "date": "2026-10-04",
+      "coin": "BTC",
+      "price": null,
+      "trend": "Nicht verfügbar · Quelle heute nicht verifiziert",
+      "support": "Nicht verfügbar · Quelle heute nicht verifiziert",
+      "resistance": "Nicht verfügbar · Quelle heute nicht verifiziert",
+      "longZone": "Nicht verfügbar · Quelle heute nicht verifiziert",
+      "shortZone": "Nicht verfügbar · Quelle heute nicht verifiziert",
+      "breakout": null,
+      "breakdown": null,
+      "targets": "Nicht verfügbar · Quelle heute nicht verifiziert",
+      "clusters": "Nicht verfügbar · Quelle heute nicht verifiziert",
+      "dominance": null
+    },
+    {
+      "date": "2026-10-04",
       "coin": "XRP",
-      "price": 1.491,
-      "trend": "30m stark bullisch; 1h bullisch/neutral; 4h & Daily bullisch, kurzfristig Momentum-Warnung",
-      "support": "1,486–1,489 intraday; 1,467–1,480 übergeordnet; 1,45–1,46 Schlüsselzone",
-      "resistance": "1,495–1,507 intraday; 1,531–1,55; 1,60–1,70 übergeordnet",
-      "longZone": "1,486–1,490 bei Reclaim/Hold; alternativ 1,467–1,480 nach bullischer Reaktion",
-      "shortZone": "1,495–1,507 bei klarer Ablehnung; stärker 1,531–1,55",
-      "breakout": 1.5315,
-      "breakdown": 1.4675,
-      "targets": "Long: 1,495 / 1,507 / 1,5315 / 1,55; Short: 1,486 / 1,480 / 1,4675 / 1,45",
-      "clusters": "Oberhalb: 1,6299 (~15,5 Mio. USD, +9,3%); unterhalb: 1,4306 (~20,1 Mio. USD, -4,1%)",
-      "clusterAbove": "1,6299 (~15,5 Mio. USD)",
-      "clusterBelow": "1,4306 (~20,1 Mio. USD)",
-      "dominance": "Long-Liquidationen unterhalb / Downside-Cluster größer",
-      "distanceAbovePct": 9.3,
-      "distanceBelowPct": -4.1,
-      "heatmapComment": "CoinAnk heute nicht direkt auslesbar. Öffentliche modellierte Heatmap: stärkerer Cluster unterhalb bei 1,4306; kurzfristig relevanterer Liquiditätsmagnet nach unten. Oberhalb bleibt 1,6299 als Short-Squeeze-Zone relevant."
+      "price": null,
+      "trend": "Nicht verfügbar · Quelle heute nicht verifiziert",
+      "support": "Nicht verfügbar · Quelle heute nicht verifiziert",
+      "resistance": "Nicht verfügbar · Quelle heute nicht verifiziert",
+      "longZone": "Nicht verfügbar · Quelle heute nicht verifiziert",
+      "shortZone": "Nicht verfügbar · Quelle heute nicht verifiziert",
+      "breakout": null,
+      "breakdown": null,
+      "targets": "Nicht verfügbar · Quelle heute nicht verifiziert",
+      "clusters": "Nicht verfügbar · Quelle heute nicht verifiziert",
+      "dominance": null
     }
-  ]
+  ],
+  "dailyStatus": {
+    "capturedAt": "2026-10-04T09:35:38Z",
+    "note": "Erfasst: 04.10.2026, 11:35 Uhr Europe/Berlin. Binance-, Coinbase- und Kraken-APIs über den verfügbaren Abruf nicht zugänglich. Widersprüchliche USD-Indikationen wurden nicht als USDT-Kurse übernommen. Aktuelle Kurse, technische Marken und Heatmap-Daten nicht verfügbar. Charts: 03.10.2026. Vorhandener XRP-Eintrag vom 04.10. ohne Quellen/Zeitstempel unverändert als source-snapshot gesichert; nicht als verifizierte Tagesdaten übernommen.",
+    "sources": [
+      "https://api.binance.com/api/v3/ticker/24hr?symbol=BTCUSDT",
+      "https://api.coinbase.com/v2/prices/BTC-USD/spot",
+      "https://api.kraken.com/0/public/Ticker?pair=XBTUSDT,XRPUSDT",
+      "https://ca.investing.com/crypto/bitcoin/historical-data",
+      "https://ca.investing.com/crypto/xrp/historical-data"
+    ]
+  }
 }

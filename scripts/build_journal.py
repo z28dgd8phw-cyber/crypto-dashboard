@@ -10,6 +10,7 @@ HEADERS = ['Datum', 'Coin', 'Kurs (USDT)', 'Trend', 'Support', 'Widerstand', 'Lo
 NOTE = 'Kurs, Einstiegszonen, Breakout, Breakdown und Ziele: bestehende Tagesseiten. Trend, Support, Widerstand und Cluster: separate Heatmap-Ansichten (11:00 Uhr). Die Ansichten haben unterschiedliche Marken. Clusterpreise werden wie in den vorhandenen Grafiken übernommen. Vortagsvergleich nur mit einem Eintrag vom vorherigen Kalendertag; keine Live-Kurse.'
 
 def number(n):
+    if n is None: return 'Nicht verfügbar'
     return (f'{n:,.0f}' if n >= 100 else f'{n:.4f}'.rstrip('0').rstrip('.')).replace(',', 'X').replace('.', ',').replace('X', '.')
 
 def rows(records):
@@ -20,11 +21,14 @@ def rows(records):
     for r in sorted(records, key=lambda r: (r['date'], r['coin']), reverse=True):
         prior = (datetime.date.fromisoformat(r['date']) - datetime.timedelta(days=1)).isoformat()
         prev = next((p for p in records if p['date'] == prior and p['coin'] == r['coin']), None)
-        delta = 'Kein Vortag' if prev is None or prev['price'] <= 0 else f"{(r['price']/prev['price']-1)*100:+.2f} %".replace('.', ',')
-        result.append([datetime.date.fromisoformat(r['date']).strftime('%d.%m.%Y'), r['coin'], number(r['price']), r['trend'], r['support'], r['resistance'], r['longZone'], r['shortZone'], '> ' + number(r['breakout']), '< ' + number(r['breakdown']), r['targets'], r['clusters'], f"{r['dominance']:.0%} unterhalb", delta])
+        delta = 'Nicht verfügbar' if r['price'] is None or (prev and prev['price'] is None) else ('Kein Vortag' if prev is None or prev['price'] <= 0 else f"{(r['price']/prev['price']-1)*100:+.2f} %".replace('.', ','))
+        result.append([datetime.date.fromisoformat(r['date']).strftime('%d.%m.%Y'), r['coin'], number(r['price']), r['trend'], r['support'], r['resistance'], r['longZone'], r['shortZone'], ('> ' if r['breakout'] is not None else '') + number(r['breakout']), ('< ' if r['breakdown'] is not None else '') + number(r['breakdown']), r['targets'], r['clusters'], 'Nicht verfügbar' if r['dominance'] is None else (f"{r['dominance']:.0%} unterhalb" if isinstance(r['dominance'], (int,float)) else r['dominance']), delta])
     return result
 
 def build():
+    global NOTE
+    dataset = json.loads((ROOT/'data/journal.json').read_text())
+    NOTE = dataset.get('dailyStatus', {}).get('note', NOTE)
     records = json.loads((ROOT/'data/journal.json').read_text())['records']
     allrows = rows(records)
     latest = max(r['date'] for r in records)

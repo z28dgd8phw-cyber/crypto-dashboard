@@ -1,0 +1,54 @@
+{
+  "records": [
+    {
+      "date": "2026-10-03",
+      "coin": "BTC",
+      "price": 84630,
+      "trend": "Neutral bis leicht bearish unter 84.760 (Heatmap)",
+      "support": "84.465–84.515 (Heatmap)",
+      "resistance": "84.635–84.760 (Heatmap)",
+      "longZone": "84.250–84.450",
+      "shortZone": "84.900–85.100",
+      "breakout": 85250,
+      "breakdown": 83800,
+      "targets": "Long: 85.600 / 86.000 / 87.200; Short: 83.100 / 82.900",
+      "clusters": "Oberhalb: 92.258 (261,6 Mio. USD); unterhalb: 75.886 (237,2 Mio. USD)",
+      "dominance": 0.63
+    },
+    {
+      "date": "2026-10-03",
+      "coin": "XRP",
+      "price": 1.4814,
+      "trend": "Bearish unter 1,50 (Heatmap)",
+      "support": "1,462–1,474 (Heatmap)",
+      "resistance": "1,4866–1,4991 (Heatmap)",
+      "longZone": "1,45–1,47",
+      "shortZone": "1,50–1,53",
+      "breakout": 1.55,
+      "breakdown": 1.44,
+      "targets": "Long: 1,60 / 1,68; Short: 1,39 / 1,32",
+      "clusters": "Oberhalb: 1,5676 (13,3 Mio. USD); unterhalb: 1,4306 (17,0 Mio. USD)",
+      "dominance": 0.77
+    },
+    {
+      "date": "2026-10-04",
+      "coin": "XRP",
+      "price": 1.491,
+      "trend": "30m stark bullisch; 1h bullisch/neutral; 4h & Daily bullisch, kurzfristig Momentum-Warnung",
+      "support": "1,486–1,489 intraday; 1,467–1,480 übergeordnet; 1,45–1,46 Schlüsselzone",
+      "resistance": "1,495–1,507 intraday; 1,531–1,55; 1,60–1,70 übergeordnet",
+      "longZone": "1,486–1,490 bei Reclaim/Hold; alternativ 1,467–1,480 nach bullischer Reaktion",
+      "shortZone": "1,495–1,507 bei klarer Ablehnung; stärker 1,531–1,55",
+      "breakout": 1.5315,
+      "breakdown": 1.4675,
+      "targets": "Long: 1,495 / 1,507 / 1,5315 / 1,55; Short: 1,486 / 1,480 / 1,4675 / 1,45",
+      "clusters": "Oberhalb: 1,6299 (~15,5 Mio. USD, +9,3%); unterhalb: 1,4306 (~20,1 Mio. USD, -4,1%)",
+      "clusterAbove": "1,6299 (~15,5 Mio. USD)",
+      "clusterBelow": "1,4306 (~20,1 Mio. USD)",
+      "dominance": "Long-Liquidationen unterhalb / Downside-Cluster größer",
+      "distanceAbovePct": 9.3,
+      "distanceBelowPct": -4.1,
+      "heatmapComment": "CoinAnk heute nicht direkt auslesbar. Öffentliche modellierte Heatmap: stärkerer Cluster unterhalb bei 1,4306; kurzfristig relevanterer Liquiditätsmagnet nach unten. Oberhalb bleibt 1,6299 als Short-Squeeze-Zone relevant."
+    }
+  ]
+}
