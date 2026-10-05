@@ -1,0 +1,20 @@
+{
+  "date": "2026-10-05",
+  "retrieved_at": "2026-10-05T09:20:00Z",
+  "source": "Finance market data",
+  "quote_currency": "USD",
+  "BTC": {
+    "price": 85821,
+    "high": 86949,
+    "low": 85099
+  },
+  "XRP": {
+    "price": 1.51,
+    "high": 1.53,
+    "low": 1.5
+  },
+  "status": "partial",
+  "candles_today": "unavailable",
+  "liquidation_heatmap": "unavailable",
+  "report_files": "Earlier report snapshot, labelled 10:06 Europe/Berlin; not updated to this quote"
+}
