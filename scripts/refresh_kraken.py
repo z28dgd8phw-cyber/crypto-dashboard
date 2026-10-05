@@ -73,7 +73,8 @@ for row in summary:
 for name in ['index.html','btc.html','xrp.html','journal.html','archiv.html']:
     p=R/name;s=p.read_text()
     s=re.sub(r'<section[^>]*id="verified-daily"[^>]*>.*?</section>','',s,flags=re.S)
-    s=re.sub(r'<section class="section"><div class="section-head"><div><h2>(?:BTC|XRP) · aktueller 30-Minuten-Chart</h2>.*?</section>','',s,flags=re.S)
+    s=re.sub(r'<section class="section"><div class="section-head"><div><h2>(?:BTC|XRP) · (?:aktueller 30-Minuten-Chart|30-Minuten-Chart \(10-Uhr-Snapshot\))</h2>.*?</section>','',s,flags=re.S)
+    s=re.sub(r'<section class="section card" id="report-(\d{4}-\d{2}-\d{2})">.*?</section>', lambda m: m[0] if m[1]==DATE else '', s, flags=re.S)
     s=re.sub(r'Stand: \d{2}\.\d{2}\.\d{4}', 'Stand: '+DISPLAY, s)
     s=re.sub(r'crypto-journal-\d{4}-\d{2}-\d{2}', 'crypto-journal-'+DATE, s)
     s=s.replace('<main class="shell">','<main class="shell">'+notice,1).replace('20261004-journal','20261004-verified')
