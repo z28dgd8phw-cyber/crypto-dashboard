@@ -75,7 +75,7 @@ for name in ['index.html','btc.html','xrp.html','journal.html','archiv.html']:
     s=re.sub(r'<section[^>]*id="verified-daily"[^>]*>.*?</section>','',s,flags=re.S)
     s=re.sub(r'<section class="section"><div class="section-head"><div><h2>(?:BTC|XRP) · (?:aktueller 30-Minuten-Chart|30-Minuten-Chart \(10-Uhr-Snapshot\))</h2>.*?</section>','',s,flags=re.S)
     s=re.sub(r'<section class="section card" id="report-(\d{4}-\d{2}-\d{2})">.*?</section>', lambda m: m[0] if m[1]==DATE else '', s, flags=re.S)
-    s=re.sub(r'Stand: \d{2}\.\d{2}\.\d{4}', 'Stand: '+DISPLAY, s)
+    s=re.sub(r'Stand: \d{2}\.\d{2}\.\d{4}[^<]*', 'Stand: '+DISPLAY+' · Kraken '+when.astimezone(ZoneInfo('Europe/Berlin')).strftime('%H:%M'), s)
     s=re.sub(r'crypto-journal-\d{4}-\d{2}-\d{2}', 'crypto-journal-'+DATE, s)
     s=s.replace('<main class="shell">','<main class="shell">'+notice,1).replace('20261004-journal','20261004-verified')
     if name=='index.html':
@@ -86,6 +86,7 @@ for name in ['index.html','btc.html','xrp.html','journal.html','archiv.html']:
         s=re.sub(r'<section class="hero">.*?</section>','<section class="hero">'+cards.split('</div>')[0]+'</div></section>' if c=='BTC' else '<section class="hero">'+cards.split('</div>')[1]+'</div></section>',s,count=1,flags=re.S)
         chart=charts.split('</section>')[0 if c=='BTC' else 1]+'</section>';s=s.replace(notice,notice+chart,1)
     if name=='archiv.html':
-        s=s.replace('<div class="archive">','<div class="archive"><div class="day"><h3>'+DISPLAY+'</h3><p>Kraken-Tagesdaten und aktuelle Charts.</p><a class="btn" href="index.html">Tagesansicht öffnen</a></div><div class="day"><h3>'+last_date+'</h3><a class="btn" href="archive/'+last_date+'/final/index.html">Gesicherten Tagesstand öffnen</a></div>',1)
+        s=re.sub(r'<div class="day"><h3>'+PREVDISPLAY+r'</h3>.*?</div>', '<div class="day"><h3>'+PREVDISPLAY+'</h3><a class="btn" href="archive/'+last_date+'/final/index.html">Gesicherten Tagesstand öffnen</a></div>', s, flags=re.S)
+        s=s.replace('<div class="archive">','<div class="archive"><div class="day"><h3>'+DISPLAY+'</h3><p>Kraken-Tagesdaten und aktuelle Charts.</p><a class="btn" href="index.html">Tagesansicht öffnen</a></div>',1)
     p.write_text(s)
 print(json.dumps([{'coin':r['coin'],'price':r['price'],'previousClose':r['previousClose'],'changePct':r['changePct'],'pivot':r['pivot']} for r in summary]))
