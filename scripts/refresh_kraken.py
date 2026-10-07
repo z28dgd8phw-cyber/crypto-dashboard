@@ -16,7 +16,7 @@ tick=load('kraken-ticker-'+DATE+'.json')
 dataset=json.loads((R/'data/journal.json').read_text())
 last_date=max(r['date'] for r in dataset['records'])
 archive=R/'archive'/last_date/'final'
-if not archive.exists():
+if last_date!=DATE and not archive.exists():
     archive.mkdir(parents=True)
     for name in ['index.html','journal.html','btc.html','xrp.html']:
         s=(R/name).read_text()
@@ -40,6 +40,11 @@ for coin,pair in [('BTC','XBTUSDT'),('XRP','XRPUSDT')]:
     sma=statistics.mean(float(c[4]) for c in completed[-20:])
     trend=('Über' if price>sma else 'Unter')+' SMA20 ('+fmt(sma,coin)+'); '+('über' if price>pivot else 'unter')+' Tagespivot '+fmt(pivot,coin)
     row=dict(date=DATE,coin=coin,price=price,trend=trend,support='S1 '+fmt(s1,coin)+' / S2 '+fmt(s2,coin),resistance='R1 '+fmt(r1,coin)+' / R2 '+fmt(r2,coin),longZone=fmt(s1,coin)+'–'+fmt(pivot,coin)+' (Pivot-Rücklauf; Bestätigung abwarten)',shortZone=fmt(r1,coin)+'–'+fmt(r2,coin)+' (nur bei Ablehnung)',breakout=r1,breakdown=s1,targets='Oberseite R1/R2: '+fmt(r1,coin)+' / '+fmt(r2,coin)+'; Unterseite S1/S2: '+fmt(s1,coin)+' / '+fmt(s2,coin),clusters='Keine aktuelle Liquidationsquelle; alte Heatmap: 03.10.2026',dominance=None,previousClose=close,changePct=change,comparisonBasis='Kraken-Schlusskurs '+PREVDISPLAY+', UTC-Tageskerze',source='https://api.kraken.com/0/public/Ticker?pair=XBTUSDT,XRPUSDT',capturedAt=when.isoformat(),pivot=pivot,sma20=sma,dayHigh=float(tick[pair]['h'][0]),dayLow=float(tick[pair]['l'][0]))
+    if price<s2:
+        row['trend']+='; S1 und S2 bereits unterschritten'
+        row['support']+=' (berechnet, bereits unterschritten; kein neuer Support bestätigt)'
+        row['longZone']=fmt(s1,coin)+'–'+fmt(pivot,coin)+' (nur nach Rückeroberung von S1; derzeit darunter)'
+        row['targets']='Rückeroberung: S2/S1 '+fmt(s2,coin)+' / '+fmt(s1,coin)+'; danach R1/R2 '+fmt(r1,coin)+' / '+fmt(r2,coin)+'; weitere Abwärtsziele nicht bestätigt'
     dataset['records']=[r for r in dataset['records'] if not (r['date']==DATE and r['coin']==coin)]+[row]
     summary.append(row)
     # Publish the exact inspected source window needed to reproduce these calculations.
