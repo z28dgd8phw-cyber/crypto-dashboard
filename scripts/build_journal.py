@@ -45,9 +45,11 @@ def build():
     (ROOT/'journal.html').write_text(prefix+body)
     reference_path = ROOT/'excel-reference.html'
     if reference_path.exists():
-        reference = reference_path.read_text().replace('id="excel-original"', 'id="journal"', 1)
+        reference = reference_path.read_text().replace('id="excel-original"', 'id="excel-reference"', 1)
         reference_block = '<!-- EXCEL REFERENCE START -->' + reference + '<!-- EXCEL REFERENCE END -->'
-        journal_page = prefix + body.replace('<main class="shell">', '<main class="shell">' + reference_block, 1)
+        # Keep the CURRENT daily journal first. The old Excel start template is only a reference below it.
+        journal_body = body.replace('<section class="section card">', '<section id="daily-journal" class="section card" style="scroll-margin-top:150px">', 1)
+        journal_page = prefix + journal_body.replace('<div class="footer">', reference_block + '<div class="footer">', 1)
         if 'href="excel-reference.css' not in journal_page:
             journal_page = journal_page.replace('</head>', '<link rel="stylesheet" href="excel-reference.css?v=20261003-template"></head>')
         journal_page = journal_page.replace('</body>', '<script src="excel-reference.js?v=20261003-template" defer></script></body>')
