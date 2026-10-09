@@ -58,12 +58,16 @@ for coin,pair in [('BTC','XBTUSDT'),('XRP','XRPUSDT')]:
         value=bottom+(top-bottom)*i/5;yy=y(value);svg.append(f'<path d="M70 {yy} H1410" stroke="#22384c"/><text x="1420" y="{yy+6}" font-size="18">{fmt(value,coin)}</text>')
     for label,value,color in [('S2',s2,'#ff8b8b'),('S1',s1,'#ff8b8b'),('Pivot',pivot,'#f6dc72'),('R1',r1,'#73ddb3'),('R2',r2,'#73ddb3')]:
         yy=y(value);svg.append(f'<path d="M70 {yy} H1410" stroke="{color}" stroke-dasharray="8 6"/><text x="75" y="{yy-7}" fill="{color}" font-size="17">{label} {fmt(value,coin)}</text>')
+    # Current target zones: long S1-Pivot, neutral Pivot-R1, short R1-R2.
+    zone_x,zone_w=930,460
+    svg.append(f'<!-- ZIELZONEN-OVERLAY --><g><rect x="{zone_x}" y="{y(r2)}" width="{zone_w}" height="{y(r1)-y(r2)}" rx="10" fill="#e44f61" fill-opacity="0.16" stroke="#e44f61" stroke-opacity="0.75"/><rect x="{zone_x}" y="{y(r1)}" width="{zone_w}" height="{y(pivot)-y(r1)}" rx="10" fill="#6f8fae" fill-opacity="0.17" stroke="#6f8fae" stroke-opacity="0.7"/><rect x="{zone_x}" y="{y(pivot)}" width="{zone_w}" height="{y(s1)-y(pivot)}" rx="10" fill="#28c76f" fill-opacity="0.14" stroke="#28c76f" stroke-opacity="0.75"/></g>')
     for i,c in enumerate(bars):
         x=95+i*13.6;o,h,l,cl=map(float,c[1:5]);color='#6bdcb0' if cl>=o else '#ef7e91';yy=min(y(o),y(cl));height=max(2,abs(y(o)-y(cl)))
         svg.append(f'<path d="M{x} {y(h)} V{y(l)}" stroke="{color}"/><rect x="{x-4}" y="{yy}" width="8" height="{height}" fill="{color}"/>')
         if i%24==0:
             label=datetime.datetime.fromtimestamp(c[0],ZoneInfo('Europe/Berlin')).strftime('%d.%m. %H:%M');svg.append(f'<text x="{x}" y="700" text-anchor="middle" font-size="17">{label}</text>')
-    svg.append('<text x="70" y="750" font-size="17">Pivot-Linien aus dem abgeschlossenen UTC-Vortag · Spotmarkt · keine Liquidations-Heatmap</text></g></svg>')
+    svg.append(f'<g font-family="Arial" font-weight="700"><rect x="980" y="94" width="360" height="42" rx="12" fill="#0b2437" stroke="#3a6687"/><text x="1160" y="122" text-anchor="middle" font-size="22" fill="#e6f0fa">Zielzonen {DISPLAY}</text><text x="1160" y="{(y(r2)+y(r1))/2+6}" text-anchor="middle" font-size="19" fill="#ff9eaa">Short-Zone {fmt(r1,coin)}–{fmt(r2,coin)}</text><text x="1160" y="{(y(r1)+y(pivot))/2+6}" text-anchor="middle" font-size="19" fill="#c8d8e7">Neutral {fmt(pivot,coin)}–{fmt(r1,coin)}</text><text x="1160" y="{(y(pivot)+y(s1))/2+6}" text-anchor="middle" font-size="19" fill="#84f2ad">Long-Zone {fmt(s1,coin)}–{fmt(pivot,coin)}</text><text x="1000" y="{y(r1)-15}" font-size="17" fill="#58d7ff">Breakout &gt; {fmt(r1,coin)}</text><text x="1000" y="{y(s1)+25}" font-size="17" fill="#ff8b8b">Breakdown &lt; {fmt(s1,coin)}</text><text x="1000" y="{y(r2)-15}" font-size="17" fill="#73ddb3">Ziel oben: {fmt(r2,coin)}</text></g>')
+    svg.append('<text x="70" y="750" font-size="17">Zielzonen aus Tagespivot/S1/R1/R2 · Spotmarkt · keine Liquidations-Heatmap</text></g></svg>')
     (R/(coin.lower()+'-current-'+DATE+'.svg')).write_text(''.join(svg))
 note='Kraken Spot BTC/USDT und XRP/USDT. Abruf '+captured+' Europe/Berlin; Börsenzeit bestätigt. Veränderung: aktueller letzter Handel gegen Kraken-Schlusskurs des '+PREVDISPLAY+' (UTC), nicht gegen den älteren Journal-Screenshot. Trend: Kurs gegen SMA20 der abgeschlossenen UTC-Tage. Klassische Tagespivots: P=(Vortagshoch+Vortagstief+Vortagsschluss)/3; S1=2P-H, R1=2P-L, S2=P-(H-L), R2=P+(H-L). Zonen und Ziele sind daraus abgeleitete Szenarien; keine unabhängig bestätigten Chart-Signale. Aktuelle Liquidations-Heatmap fehlt; Grafikstand 03.10.2026 bleibt separat erhalten.'
 dataset['dailyStatus']={'capturedAt':when.isoformat(),'note':note,'sources':['https://api.kraken.com/0/public/Ticker?pair=XBTUSDT,XRPUSDT','https://api.kraken.com/0/public/OHLC?pair=XBTUSDT&interval=1440','https://api.kraken.com/0/public/OHLC?pair=XRPUSDT&interval=1440','https://api.kraken.com/0/public/Time']}
@@ -74,11 +78,11 @@ for row in summary:
     c=row['coin'];cards+='<div class="card"><h2>'+c+'/USDT · '+fmt(row['price'],c)+'</h2><p class="lead">'+f"{row['changePct']*100:+.2f}".replace('.',',')+' % zum Vortagsschluss</p><p>Tagesbereich (UTC): '+fmt(row['dayLow'],c)+'–'+fmt(row['dayHigh'],c)+'</p><p>'+html.escape(row['trend'])+'</p><p>Support: '+row['support']+'<br>Widerstand: '+row['resistance']+'</p></div>'
 charts=''
 for row in summary:
-    c=row['coin'];file=c.lower()+'-current-'+DATE+'.svg';charts+='<section class="section"><div class="section-head"><div><h2>'+c+' · aktueller 30-Minuten-Chart</h2><p>Kraken Spot · echte Kerzen · Pivot-Marken aus dem UTC-Vortag</p></div><a class="btn" href="'+file+'" target="_blank">Vollbild / Zoom</a></div><div class="chart-card"><img src="'+file+'" alt="'+c+' aktueller Kraken-Chart" style="width:100%;height:auto"></div></section>'
+    c=row['coin'];file=c.lower()+'-current-'+DATE+'.svg';charts+='<section class="section"><div class="section-head"><div><h2>'+c+' · aktuelle Zielzonen · 30-Minuten-Chart</h2><p>Kraken Spot · echte Kerzen · Long-/Neutral-/Short-Zonen und Pivot-Marken aus dem UTC-Vortag</p></div><a class="btn" href="'+file+'" target="_blank">Vollbild / Zoom</a></div><div class="chart-card"><img src="'+file+'" alt="'+c+' aktuelle Zielzonen" style="width:100%;height:auto"></div></section>'
 for name in ['index.html','btc.html','xrp.html','journal.html','archiv.html']:
     p=R/name;s=p.read_text()
     s=re.sub(r'<section[^>]*id="verified-daily"[^>]*>.*?</section>','',s,flags=re.S)
-    s=re.sub(r'<section class="section"><div class="section-head"><div><h2>(?:BTC|XRP) · (?:aktueller 30-Minuten-Chart|30-Minuten-Chart \(10-Uhr-Snapshot\))</h2>.*?</section>','',s,flags=re.S)
+    s=re.sub(r'<section class="section"><div class="section-head"><div><h2>(?:BTC|XRP) · (?:aktueller 30-Minuten-Chart|aktuelle Zielzonen · 30-Minuten-Chart|30-Minuten-Chart \(10-Uhr-Snapshot\))</h2>.*?</section>','',s,flags=re.S)
     s=re.sub(r'<section class="section card" id="report-(\d{4}-\d{2}-\d{2})">.*?</section>', lambda m: m[0] if m[1]==DATE else '', s, flags=re.S)
     s=re.sub(r'Stand: \d{2}\.\d{2}\.\d{4}[^<]*', 'Stand: '+DISPLAY+' · Kraken '+when.astimezone(ZoneInfo('Europe/Berlin')).strftime('%H:%M'), s)
     s=re.sub(r'crypto-journal-\d{4}-\d{2}-\d{2}', 'crypto-journal-'+DATE, s)
