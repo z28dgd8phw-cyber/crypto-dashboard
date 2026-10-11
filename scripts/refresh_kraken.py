@@ -45,6 +45,11 @@ for coin,pair in [('BTC','XBTUSDT'),('XRP','XRPUSDT')]:
         row['support']+=' (berechnet, bereits unterschritten; kein neuer Support bestätigt)'
         row['longZone']=fmt(s1,coin)+'–'+fmt(pivot,coin)+' (nur nach Rückeroberung von S1; derzeit darunter)'
         row['targets']='Rückeroberung: S2/S1 '+fmt(s2,coin)+' / '+fmt(s1,coin)+'; danach R1/R2 '+fmt(r1,coin)+' / '+fmt(r2,coin)+'; weitere Abwärtsziele nicht bestätigt'
+    elif price<s1:
+        row['trend']+='; S1 bereits unterschritten, über S2'
+        row['support']+=' (berechnet; S1 unterschritten, S2 darunter)'
+        row['longZone']=fmt(s1,coin)+'–'+fmt(pivot,coin)+' (nur nach Rückeroberung von S1; derzeit darunter)'
+        row['targets']='Abwärtsszenario S2: '+fmt(s2,coin)+'; Rückeroberung S1/Pivot: '+fmt(s1,coin)+' / '+fmt(pivot,coin)+'; danach R1/R2: '+fmt(r1,coin)+' / '+fmt(r2,coin)
     dataset['records']=[r for r in dataset['records'] if not (r['date']==DATE and r['coin']==coin)]+[row]
     summary.append(row)
     # Publish the exact inspected source window needed to reproduce these calculations.
