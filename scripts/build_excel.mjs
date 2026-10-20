@@ -13,7 +13,7 @@ const selected=records.filter(r=>r.date===latest).sort((a,b)=>a.coin.localeCompa
 const data=selected.map(r=>{
   const previousDate=new Date(r.date+'T12:00:00Z');previousDate.setUTCDate(previousDate.getUTCDate()-1);
   const prior=r.previousClose!==undefined?{price:r.previousClose}:records.find(p=>p.coin===r.coin&&p.date===previousDate.toISOString().slice(0,10));
-  return [new Date(r.date+'T00:00:00Z'),r.coin,r.price??'Nicht verfügbar',r.trend,r.support,r.resistance,r.longZone,r.shortZone,r.breakout??'Nicht verfügbar',r.breakdown??'Nicht verfügbar',r.targets,r.clusters,r.dominance??'Nicht verfügbar',r.price===null||prior?.price===null?'Nicht verfügbar':prior&&prior.price>0?r.price/prior.price-1:'Kein Vortag'];
+  return [(Date.parse(r.date+'T00:00:00Z')-Date.UTC(1899,11,30))/86400000,r.coin,r.price??'Nicht verfügbar',r.trend,r.support,r.resistance,r.longZone,r.shortZone,r.breakout??'Nicht verfügbar',r.breakdown??'Nicht verfügbar',r.targets,r.clusters,r.dominance??'Nicht verfügbar',r.price===null||prior?.price===null?'Nicht verfügbar':prior&&prior.price>0?r.price/prior.price-1:'Kein Vortag'];
 });
 s.getRange('A6:N'+(5+data.length)).values=data;
 s.getRange('A5:N7').format.font={name:'Arial',size:11};
