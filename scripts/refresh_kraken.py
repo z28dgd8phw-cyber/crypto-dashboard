@@ -10,7 +10,10 @@ def load(name):
     data=json.loads((R/'data'/name).read_text());assert not data['error'],data['error'];return data['result']
 stamp=load('kraken-time-'+DATE+'.json')['unixtime']
 when=datetime.datetime.fromtimestamp(stamp,datetime.timezone.utc)
-assert when.date().isoformat()==DATE
+assert when.astimezone(ZoneInfo('Europe/Berlin')).date().isoformat()==DATE
+# Until UTC midnight, the previous Berlin calendar day is still an open UTC candle.
+PREVIOUS=(when.date()-datetime.timedelta(days=1)).isoformat()
+PREVDISPLAY=datetime.date.fromisoformat(PREVIOUS).strftime('%d.%m.%Y')
 captured=when.astimezone(ZoneInfo('Europe/Berlin')).strftime('%d.%m.%Y, %H:%M Uhr')
 tick=load('kraken-ticker-'+DATE+'.json')
 dataset=json.loads((R/'data/journal.json').read_text())
