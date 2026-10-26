@@ -1,0 +1,2 @@
+2026-10-26 16:00 Europe/Berlin
+Requested scheduled BTC/XRP report; trigger publisher with real retrieval time. Preserve existing 10:00 snapshot.
