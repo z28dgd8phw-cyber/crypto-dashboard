@@ -231,13 +231,26 @@ def chart_block(row):
 
 def table_rows(records):
     rows=[]
+    chronological=sorted(records,key=lambda x:(x["coin"],x["retrieved_at"]))
+    previous={}
+    comparisons={}
+    for r in chronological:
+        c=r["coin"]
+        earlier=previous.get(c)
+        comparisons[(r["date"],r["slot"],c)]=(
+            f'{r["price"]-earlier["price"]:+.5f} USDT / '
+            f'{(r["price"]/earlier["price"]-1)*100:+.2f} %'
+            if earlier and earlier["price"] else "–"
+        )
+        previous[c]=r
     for r in sorted(records,key=lambda x:(x["date"],x["slot"],x["coin"]),reverse=True):
         c=r["coin"];z=r["zones"]
-        rows.append(f'<tr><td>{r["date"]}</td><td>{r["slot"].replace("-00",":00")}</td><td>{c}</td><td>{fmt(r["price"],c)}</td><td>{html.escape(r["trend"])}</td><td>{fmt(z["s1"],c)}</td><td>{fmt(z["r1"],c)}</td><td>{fmt(z["s1"],c)}–{fmt(z["pivot"],c)}</td><td>{fmt(z["pivot"],c)}–{fmt(z["r1"],c)}</td><td>{fmt(z["r1"],c)}–{fmt(z["r2"],c)}</td><td>{fmt(z["r1"],c)}</td><td>{fmt(z["s1"],c)}</td><td>{fmt(z["r2"],c)} / {fmt(z["s2"],c)}</td><td>{html.escape(r["retrieved_at"])}</td></tr>')
+        delta=comparisons[(r["date"],r["slot"],c)]
+        rows.append(f'<tr><td>{r["date"]}</td><td>{r["slot"].replace("-00",":00")}</td><td>{c}</td><td>{fmt(r["price"],c)}</td><td>{html.escape(r["trend"])}</td><td>{fmt(z["s1"],c)}</td><td>{fmt(z["r1"],c)}</td><td>{fmt(z["s1"],c)}–{fmt(z["pivot"],c)}</td><td>{fmt(z["pivot"],c)}–{fmt(z["r1"],c)}</td><td>{fmt(z["r1"],c)}–{fmt(z["r2"],c)}</td><td>{fmt(z["r1"],c)}</td><td>{fmt(z["s1"],c)}</td><td>{fmt(z["r2"],c)} / {fmt(z["s2"],c)}</td><td>{html.escape(delta)}</td><td>{html.escape(r["retrieved_at"])}</td></tr>')
     return "".join(rows)
 
 def journal_block(records):
-    headers=("Datum","Zeit","Coin","Kurs","Trend 30m","Support S1","Widerstand R1","Long","Neutral","Short","Breakout","Breakdown","Ziele R2/S2","Abrufzeit")
+    headers=("Datum","Zeit","Coin","Kurs","Trend 30m","Support S1","Widerstand R1","Long","Neutral","Short","Breakout","Breakdown","Ziele R2/S2","Veränderung zum vorherigen Snapshot","Abrufzeit")
     return '<section class="section card"><h2>Intraday-Journal · 10 und 16 Uhr</h2><p>Alle verfügbaren Snapshots bleiben erhalten. Pivot-Marken sind bedingte Szenarien; keine Heatmap.</p><div class="table-wrap journal-wrap"><table class="journal-table"><thead><tr>'+''.join(f'<th>{x}</th>' for x in headers)+'</tr></thead><tbody>'+table_rows(records)+'</tbody></table></div></section>'
 
 def exports(rows,records):
@@ -355,10 +368,10 @@ def main():
     if SLOT=="16-00" and ten.exists():
         prev=json.loads(ten.read_text())
     heading=f"{DISPLAY} · {SLOT.replace('-00',':00')} Uhr"
-    if SLOT=="10-00" and LOCAL.minute>=10:
+    if (SLOT=="10-00" and (LOCAL.hour>10 or LOCAL.minute>=10)) or (SLOT=="16-00" and (LOCAL.hour>16 or LOCAL.minute>=10)):
         heading+=" (Nachholung)"
     captured=" · ".join(f"{r['coin']}: {dt.datetime.fromisoformat(r['retrieved_at']).strftime('%H:%M:%S')} Uhr" for r in rows)
-    top=f'<section class="section card" id="live-snapshot"><h2>Aktuelle BTC-/XRP-Analyse · {heading}</h2><p><strong>Tatsächlicher Abruf:</strong> {captured} (Europe/Berlin). <strong>Quelle:</strong> Binance Spot, echte Kerzen. <strong>Pivot-Basis:</strong> abgeschlossener UTC-Vortag {rows[0]["previous_utc_date"]}. Kein rückdatierter 10:00-Uhr-Kurs.</p><div class="hero">'+''.join(card(r,prev.get(r["coin"])) for r in rows)+'</div>'+download_html+'<p class="muted">30-Minuten-Chart: grüne Long-, blaue Neutral- und rote Short-Zone. 15m/1h/4h/Daily in den Detailtabellen. Alle Szenarien bedingt; keine Anlageberatung.</p></section>'
+    top=f'<section class="section card" id="live-snapshot"><h2>Aktuelle BTC-/XRP-Analyse · {heading}</h2><p><strong>Tatsächlicher Abruf:</strong> {captured} (Europe/Berlin). <strong>Quelle:</strong> Binance Spot, echte Kerzen. <strong>Pivot-Basis:</strong> abgeschlossener UTC-Vortag {rows[0]["previous_utc_date"]}. Keine rückdatierten Kurse.</p><div class="hero">'+''.join(card(r,prev.get(r["coin"])) for r in rows)+'</div>'+download_html+'<p class="muted">30-Minuten-Chart: grüne Long-, blaue Neutral- und rote Short-Zone. 15m/1h/4h/Daily in den Detailtabellen. Alle Szenarien bedingt; keine Anlageberatung.</p></section>'
     charts="".join(chart_block(r) for r in rows)
     intraday=journal_block(history["records"])
     snapshot_html=top+charts+intraday
