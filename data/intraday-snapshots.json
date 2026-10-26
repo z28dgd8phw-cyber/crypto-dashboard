@@ -1,0 +1,60 @@
+{
+  "snapshots": [
+    {
+      "date": "2026-10-26",
+      "slot": "nachholung-10-57",
+      "display": "Nachholung 10:57 Uhr",
+      "capturedAt": "2026-10-26T09:58:05+00:00",
+      "records": [
+        {
+          "date": "2026-10-26",
+          "coin": "BTC",
+          "price": 80565.3,
+          "trend": "Unter SMA20 (82.338,9); über Tagespivot 80.345,2",
+          "support": "S1 79.659,9 / S2 79.169,4",
+          "resistance": "R1 80.835,7 / R2 81.521,0",
+          "longZone": "79.659,9–80.345,2 (Pivot-Rücklauf; Bestätigung abwarten)",
+          "shortZone": "80.835,7–81.521,0 (nur bei Ablehnung)",
+          "breakout": 80835.66666666667,
+          "breakdown": 79659.86666666667,
+          "targets": "Oberseite R1/R2: 80.835,7 / 81.521,0; Unterseite S1/S2: 79.659,9 / 79.169,4",
+          "clusters": "Keine aktuelle Liquidationsquelle; alte Heatmap: 03.10.2026",
+          "dominance": null,
+          "previousClose": 80150.3,
+          "changePct": 0.005177772260365865,
+          "comparisonBasis": "Kraken-Schlusskurs 25.10.2026, UTC-Tageskerze",
+          "source": "https://api.kraken.com/0/public/Ticker?pair=XBTUSDT,XRPUSDT",
+          "capturedAt": "2026-10-26T09:58:05+00:00",
+          "pivot": 80345.23333333334,
+          "sma20": 82338.85,
+          "dayHigh": 80570.1,
+          "dayLow": 79371.2
+        },
+        {
+          "date": "2026-10-26",
+          "coin": "XRP",
+          "price": 1.29185,
+          "trend": "Unter SMA20 (1,3500); unter Tagespivot 1,2988",
+          "support": "S1 1,2829 / S2 1,2692",
+          "resistance": "R1 1,3125 / R2 1,3284",
+          "longZone": "1,2829–1,2988 (Pivot-Rücklauf; Bestätigung abwarten)",
+          "shortZone": "1,3125–1,3284 (nur bei Ablehnung)",
+          "breakout": 1.3124666666666667,
+          "breakdown": 1.2828666666666666,
+          "targets": "Oberseite R1/R2: 1,3125 / 1,3284; Unterseite S1/S2: 1,2829 / 1,2692",
+          "clusters": "Keine aktuelle Liquidationsquelle; alte Heatmap: 03.10.2026",
+          "dominance": null,
+          "previousClose": 1.2965,
+          "changePct": -0.003586579251831923,
+          "comparisonBasis": "Kraken-Schlusskurs 25.10.2026, UTC-Tageskerze",
+          "source": "https://api.kraken.com/0/public/Ticker?pair=XBTUSDT,XRPUSDT",
+          "capturedAt": "2026-10-26T09:58:05+00:00",
+          "pivot": 1.2988333333333333,
+          "sma20": 1.3500285,
+          "dayHigh": 1.30016,
+          "dayLow": 1.2734
+        }
+      ]
+    }
+  ]
+}
