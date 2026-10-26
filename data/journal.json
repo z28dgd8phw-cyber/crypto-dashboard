@@ -929,8 +929,8 @@
     {
       "date": "2026-10-26",
       "coin": "BTC",
-      "price": 80541.94,
-      "trend": "Höheres Hoch / höheres Tief",
+      "price": 80424.19,
+      "trend": "Tieferes Hoch / tieferes Tief",
       "support": "S1 79.655,40 / S2 79.156,72",
       "resistance": "R1 80.843,23 / R2 81.532,38",
       "longZone": "79.655,40–80.344,55",
@@ -943,14 +943,14 @@
       "dominance": null,
       "previousClose": 80154.09,
       "source": "https://data-api.binance.vision/api/v3/klines?symbol=BTCUSDT&interval=30m&limit=300",
-      "capturedAt": "2026-10-26T10:59:24.471564+01:00",
-      "snapshot": "10-00"
+      "capturedAt": "2026-10-26T16:00:39.539406+01:00",
+      "snapshot": "16-00"
     },
     {
       "date": "2026-10-26",
       "coin": "XRP",
-      "price": 1.2912,
-      "trend": "Seitwärts / gemischte Struktur",
+      "price": 1.3032,
+      "trend": "Höheres Hoch / höheres Tief",
       "support": "S1 1,28230 / S2 1,26840",
       "resistance": "R1 1,31300 / R2 1,32980",
       "longZone": "1,28230–1,29910",
@@ -963,13 +963,13 @@
       "dominance": null,
       "previousClose": 1.2962,
       "source": "https://data-api.binance.vision/api/v3/klines?symbol=XRPUSDT&interval=30m&limit=300",
-      "capturedAt": "2026-10-26T10:59:27.687358+01:00",
-      "snapshot": "10-00"
+      "capturedAt": "2026-10-26T16:00:44.753108+01:00",
+      "snapshot": "16-00"
     }
   ],
   "dailyStatus": {
-    "capturedAt": "2026-10-26T10:59:20.935655+01:00",
-    "note": "Binance Spot · 26.10.2026 10:59 Uhr Europe/Berlin; echte Kerzen und Pivot-Szenarien des abgeschlossenen UTC-Vortags. Keine Heatmap.",
+    "capturedAt": "2026-10-26T16:00:34.725254+01:00",
+    "note": "Binance Spot · 26.10.2026 16:00 Uhr Europe/Berlin; echte Kerzen und Pivot-Szenarien des abgeschlossenen UTC-Vortags. Keine Heatmap.",
     "sources": [
       "https://data-api.binance.vision/api/v3/klines?symbol=BTCUSDT&interval=30m&limit=300",
       "https://data-api.binance.vision/api/v3/klines?symbol=XRPUSDT&interval=30m&limit=300"
