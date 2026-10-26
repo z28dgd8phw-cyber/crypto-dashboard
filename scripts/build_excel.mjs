@@ -6,7 +6,7 @@ const latest = records.map(r=>r.date).sort().at(-1);
 const wb=Workbook.create();
 const s=wb.worksheets.add('Journal'); s.showGridLines=false;
 s.getRange('A2').values=[['CRYPTO Tagesjournal']]; s.getRange('A2').format.font={name:'Arial',size:16,bold:true};
-s.getRange('A3').values=[['Stand '+latest+'; Kraken Spot in USDT; technische Marken: berechnete Tagespivots.']];
+s.getRange('A3').values=[['Stand '+latest+'; '+(dailyStatus?.note?.startsWith('Binance')?'Binance':'Kraken')+' Spot in USDT; technische Marken: berechnete Tagespivots.']];
 const headers=['Datum','Coin','Kurs (USDT)','Trend','Support','Widerstand','Long-Zone','Short-Zone','Breakout über','Breakdown unter','Ziele','Heatmap-Cluster','Heatmap-Dominanz','Veränderung zum Vortag'];
 s.getRange('A5:N5').values=[headers];
 const selected=records.filter(r=>r.date===latest).sort((a,b)=>a.coin.localeCompare(b.coin));
