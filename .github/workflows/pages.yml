@@ -1,21 +1,25 @@
-name: Deploy CRYPTO Dashboard to GitHub Pages
+name: Publish BTC/XRP and deploy CRYPTO Dashboard
 
 on:
   push:
     branches: ["main"]
   workflow_dispatch:
+  schedule:
+    # GitHub cron is UTC. Both CET and CEST slots are covered;
+    # the publisher selects 10:00 or 16:00 Europe/Berlin and skips duplicates.
+    - cron: "0 8,9,14,15 * * *"
 
 permissions:
-  contents: read
+  contents: write
   pages: write
   id-token: write
 
 concurrency:
-  group: "pages"
-  cancel-in-progress: true
+  group: "crypto-publish-pages"
+  cancel-in-progress: false
 
 jobs:
-  deploy:
+  publish-and-deploy:
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
@@ -23,6 +27,27 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install report dependencies
+        run: python -m pip install --disable-pip-version-check openpyxl reportlab
+      - name: Fetch verified BTC/XRP market data and build daily snapshot
+        run: python scripts/publish_intraday.py
+      - name: Commit dated snapshots and downloads
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add index.html btc.html xrp.html journal.html archiv.html data/ reports/ archive/ downloads/ btc-current-*.svg xrp-current-*.svg
+          if ! git diff --cached --quiet; then
+            git commit -m "Publish BTC/XRP verified intraday snapshot"
+            git push origin HEAD:main
+          else
+            echo "No new verified snapshot to commit."
+          fi
       - name: Setup Pages
         uses: actions/configure-pages@v5
       - name: Upload site
