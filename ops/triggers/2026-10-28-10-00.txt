@@ -1,0 +1,3 @@
+BTC/XRP 10:00 Europe/Berlin publishing trigger, 2026-10-28.
+Run the existing verified GitHub Actions publisher; use actual Binance retrieval timestamps.
+Preserve previous snapshots and archives.
