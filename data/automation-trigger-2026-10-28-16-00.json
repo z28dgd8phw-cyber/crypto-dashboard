@@ -1,0 +1,7 @@
+{
+  "date": "2026-10-28",
+  "slot": "16:00",
+  "reason": "Trigger scheduled BTC/XRP publication via GitHub Actions; market prices are fetched by publisher at actual execution time.",
+  "source": "automation",
+  "historical_prices_fabricated": false
+}
