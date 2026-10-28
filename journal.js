@@ -1,6 +1,6 @@
 'use strict';
 const filters = document.querySelectorAll('.journal-filters button');
-const records = document.querySelectorAll('.journal-table tbody tr');
+const records = document.querySelectorAll('.journal-table tbody tr[data-coin]');
 filters.forEach(button => button.addEventListener('click', () => {
   filters.forEach(other => other.setAttribute('aria-pressed', String(other === button)));
   let count = 0;
