@@ -1,0 +1,1 @@
+Anforderung: BTC/XRP 16:00-Uhr-Snapshot für den 29.10.2026. Daten ausschließlich zum tatsächlichen Abrufzeitpunkt erfassen. 10-Uhr-Snapshot unverändert erhalten. GitHub Actions pages.yml verarbeitet Push-Trigger.
