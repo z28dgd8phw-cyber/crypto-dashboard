@@ -44,7 +44,12 @@ jobs:
           git add index.html btc.html xrp.html journal.html archiv.html data/ reports/ archive/ downloads/ btc-current-*.svg xrp-current-*.svg
           if ! git diff --cached --quiet; then
             git commit -m "Publish BTC/XRP verified intraday snapshot"
-            git push origin HEAD:main
+            if ! git push origin HEAD:main; then
+              echo "Concurrent update detected; fetching and rebasing once."
+              git fetch origin main
+              git rebase origin/main
+              git push origin HEAD:main
+            fi
           else
             echo "No new verified snapshot to commit."
           fi
