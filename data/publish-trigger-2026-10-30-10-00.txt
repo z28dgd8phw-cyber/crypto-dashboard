@@ -1,0 +1,1 @@
+Anstoß für den 10:00-Uhr-BTC/XRP-Bericht am 30.10.2026. Der GitHub-Workflow ermittelt Kurse und tatsächliche Abrufzeiten live; kein historischer Kurs wird vorgegeben.
