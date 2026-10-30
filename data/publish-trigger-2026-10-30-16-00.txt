@@ -1,0 +1,1 @@
+Requested 16:00 Europe/Berlin snapshot on 2026-10-30. Trigger GitHub Actions source-backed BTC/XRP publication; preserve 10:00 and prior history.
