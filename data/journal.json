@@ -1129,8 +1129,8 @@
     {
       "date": "2026-10-31",
       "coin": "BTC",
-      "price": 77376.01,
-      "trend": "Seitwärts / gemischte Struktur",
+      "price": 77472.63,
+      "trend": "Höheres Hoch / höheres Tief",
       "support": "S1 76.195,16 / S2 75.021,56",
       "resistance": "R1 78.673,19 / R2 79.977,62",
       "longZone": "76.195,16–77.499,59",
@@ -1143,14 +1143,14 @@
       "dominance": null,
       "previousClose": 77368.77,
       "source": "https://data-api.binance.vision/api/v3/klines?symbol=BTCUSDT&interval=30m&limit=300",
-      "capturedAt": "2026-10-31T10:00:24.550451+01:00",
-      "snapshot": "10-00"
+      "capturedAt": "2026-10-31T16:00:30.764452+01:00",
+      "snapshot": "16-00"
     },
     {
       "date": "2026-10-31",
       "coin": "XRP",
-      "price": 1.2462,
-      "trend": "Seitwärts / gemischte Struktur",
+      "price": 1.2502,
+      "trend": "Höheres Hoch / höheres Tief",
       "support": "S1 1,21330 / S2 1,16990",
       "resistance": "R1 1,28700 / R2 1,31730",
       "longZone": "1,21330–1,24360",
@@ -1163,13 +1163,13 @@
       "dominance": null,
       "previousClose": 1.2567,
       "source": "https://data-api.binance.vision/api/v3/klines?symbol=XRPUSDT&interval=30m&limit=300",
-      "capturedAt": "2026-10-31T10:00:27.787547+01:00",
-      "snapshot": "10-00"
+      "capturedAt": "2026-10-31T16:00:34.080567+01:00",
+      "snapshot": "16-00"
     }
   ],
   "dailyStatus": {
-    "capturedAt": "2026-10-31T10:00:21.322260+01:00",
-    "note": "Binance Spot · 31.10.2026 10:00 Uhr Europe/Berlin; echte Kerzen und Pivot-Szenarien des abgeschlossenen UTC-Vortags. Keine Heatmap.",
+    "capturedAt": "2026-10-31T16:00:25.903678+01:00",
+    "note": "Binance Spot · 31.10.2026 16:00 Uhr Europe/Berlin; echte Kerzen und Pivot-Szenarien des abgeschlossenen UTC-Vortags. Keine Heatmap.",
     "sources": [
       "https://data-api.binance.vision/api/v3/klines?symbol=BTCUSDT&interval=30m&limit=300",
       "https://data-api.binance.vision/api/v3/klines?symbol=XRPUSDT&interval=30m&limit=300"
