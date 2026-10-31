@@ -1,0 +1,1 @@
+Request BTC/XRP verified 10:00 Europe/Berlin snapshot for 2026-10-31. GitHub Actions publisher is source of truth; preserve history, charts, downloads, and check Pages deployment. Trigger created at or after 10:00 local.
