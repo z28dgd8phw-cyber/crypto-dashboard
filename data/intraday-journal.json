@@ -987,6 +987,82 @@
       },
       "retrieved_at": "2026-11-01T10:00:38.223758+01:00",
       "source": "https://data-api.binance.vision/api/v3/klines?symbol=XRPUSDT&interval=30m&limit=300"
+    },
+    {
+      "date": "2026-11-01",
+      "slot": "16-00",
+      "coin": "BTC",
+      "price": 78055.84,
+      "trend": "Tieferes Hoch / tieferes Tief",
+      "zones": {
+        "s2": 76815.34666666666,
+        "s1": 77198.68333333333,
+        "pivot": 77497.34666666666,
+        "r1": 77880.68333333333,
+        "r2": 78179.34666666666,
+        "long": [
+          77198.68333333333,
+          77497.34666666666
+        ],
+        "neutral": [
+          77497.34666666666,
+          77880.68333333333
+        ],
+        "short": [
+          77880.68333333333,
+          78179.34666666666
+        ],
+        "long_stop": 76815.34666666666,
+        "short_stop": 78328.98095238095,
+        "long_targets": [
+          77880.68333333333,
+          78179.34666666666
+        ],
+        "short_targets": [
+          77497.34666666666,
+          77198.68333333333
+        ]
+      },
+      "retrieved_at": "2026-11-01T16:00:24.925366+01:00",
+      "source": "https://data-api.binance.vision/api/v3/klines?symbol=BTCUSDT&interval=30m&limit=300"
+    },
+    {
+      "date": "2026-11-01",
+      "slot": "16-00",
+      "coin": "XRP",
+      "price": 1.2531,
+      "trend": "Tieferes Hoch / tieferes Tief",
+      "zones": {
+        "s2": 1.2323,
+        "s1": 1.2421,
+        "pivot": 1.2522,
+        "r1": 1.262,
+        "r2": 1.2721,
+        "long": [
+          1.2421,
+          1.2522
+        ],
+        "neutral": [
+          1.2522,
+          1.262
+        ],
+        "short": [
+          1.262,
+          1.2721
+        ],
+        "long_stop": 1.2323,
+        "short_stop": 1.2763642857142856,
+        "long_targets": [
+          1.262,
+          1.2721
+        ],
+        "short_targets": [
+          1.2522,
+          1.2421
+        ]
+      },
+      "retrieved_at": "2026-11-01T16:00:28.035151+01:00",
+      "source": "https://data-api.binance.vision/api/v3/klines?symbol=XRPUSDT&interval=30m&limit=300"
     }
   ]
 }
