@@ -67,7 +67,7 @@ def svg_chart(coin,price,at,series,z,trend30):
     W,H=1280,680
     left,right,top,bottom=88,930,85,588
     a=series[-75:]
-    levels=[price,z[k] for k in ()] if False else [price,z["s2"],z["s1"],z["pivot"],z["r1"],z["r2"]]
+    levels=[price,z["s2"],z["s1"],z["pivot"],z["r1"],z["r2"]]
     lo=min([x[3] for x in a]+levels); hi=max([x[2] for x in a]+levels)
     pad=(hi-lo)*0.09 or 1
     lo-=pad;hi+=pad
