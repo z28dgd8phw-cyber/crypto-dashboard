@@ -1,0 +1,2 @@
+Trigger 2026-11-01 10:00 Europe/Berlin
+BTC/XRP intraday report. Use live Binance Spot at actual execution time; preserve existing snapshots.
