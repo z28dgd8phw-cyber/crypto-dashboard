@@ -1,0 +1,1 @@
+2026-11-02 16:09 Europe/Berlin: Bitte 16:00-Nachholung mit tatsächlicher Marktdaten-Abrufzeit veröffentlichen. 10:00-Snapshot und Archiv unverändert erhalten. Trigger für den vorhandenen GitHub-Actions-Publisher.
