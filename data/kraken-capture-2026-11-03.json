@@ -1,0 +1,12 @@
+{
+  "capturedAt": "Tue, 03 Nov 26 11:14:25 +0000",
+  "endpoints": [
+    "Time",
+    "Ticker?pair=XBTUSDT,XRPUSDT",
+    "OHLC?pair=XBTUSDT&interval=1440",
+    "OHLC?pair=XBTUSDT&interval=30",
+    "OHLC?pair=XRPUSDT&interval=1440",
+    "OHLC?pair=XRPUSDT&interval=30"
+  ],
+  "base": "https://api.kraken.com/0/public/"
+}
