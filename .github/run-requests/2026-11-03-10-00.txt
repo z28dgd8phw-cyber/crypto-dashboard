@@ -1,0 +1,1 @@
+Trigger existing verified Binance BTC/XRP intraday publisher for the 2026-11-03 10:00 Europe/Berlin reporting slot. Actual fetch timestamp is recorded by scripts/publish_intraday.py. Do not backdate prices.
