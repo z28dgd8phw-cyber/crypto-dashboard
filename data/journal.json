@@ -1249,8 +1249,8 @@
     {
       "date": "2026-11-03",
       "coin": "BTC",
-      "price": 76628.01,
-      "trend": "Tieferes Hoch / tieferes Tief",
+      "price": 77624.01,
+      "trend": "Höheres Hoch / höheres Tief",
       "support": "S1 76.054,66 / S2 75.293,33",
       "resistance": "R1 78.227,67 / R2 79.639,35",
       "longZone": "76.054,66–77.466,34",
@@ -1263,14 +1263,14 @@
       "dominance": null,
       "previousClose": 76816.0,
       "source": "https://data-api.binance.vision/api/v3/klines?symbol=BTCUSDT&interval=30m&limit=300",
-      "capturedAt": "2026-11-03T10:00:32.479783+01:00",
-      "snapshot": "10-00"
+      "capturedAt": "2026-11-03T16:42:20.160388+01:00",
+      "snapshot": "16-00"
     },
     {
       "date": "2026-11-03",
       "coin": "XRP",
-      "price": 1.2533,
-      "trend": "Seitwärts / gemischte Struktur",
+      "price": 1.2796,
+      "trend": "Höheres Hoch / höheres Tief",
       "support": "S1 1,23560 / S2 1,22100",
       "resistance": "R1 1,26470 / R2 1,27920",
       "longZone": "1,23560–1,25010",
@@ -1283,13 +1283,13 @@
       "dominance": null,
       "previousClose": 1.2502,
       "source": "https://data-api.binance.vision/api/v3/klines?symbol=XRPUSDT&interval=30m&limit=300",
-      "capturedAt": "2026-11-03T10:00:36.435538+01:00",
-      "snapshot": "10-00"
+      "capturedAt": "2026-11-03T16:42:25.007298+01:00",
+      "snapshot": "16-00"
     }
   ],
   "dailyStatus": {
-    "capturedAt": "2026-11-03T10:00:28.451140+01:00",
-    "note": "Binance Spot · 03.11.2026 10:00 Uhr Europe/Berlin; echte Kerzen und Pivot-Szenarien des abgeschlossenen UTC-Vortags. Keine Heatmap.",
+    "capturedAt": "2026-11-03T16:42:14.423944+01:00",
+    "note": "Binance Spot · 03.11.2026 16:42 Uhr Europe/Berlin; echte Kerzen und Pivot-Szenarien des abgeschlossenen UTC-Vortags. Keine Heatmap.",
     "sources": [
       "https://data-api.binance.vision/api/v3/klines?symbol=BTCUSDT&interval=30m&limit=300",
       "https://data-api.binance.vision/api/v3/klines?symbol=XRPUSDT&interval=30m&limit=300"
