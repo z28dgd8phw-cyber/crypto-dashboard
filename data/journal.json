@@ -1289,7 +1289,7 @@
     {
       "date": "2026-11-04",
       "coin": "BTC",
-      "price": 78412.89,
+      "price": 79372.08,
       "trend": "Höheres Hoch / höheres Tief",
       "support": "S1 76.540,73 / S2 75.627,59",
       "resistance": "R1 78.215,15 / R2 78.976,43",
@@ -1303,13 +1303,13 @@
       "dominance": null,
       "previousClose": 77453.86,
       "source": "https://data-api.binance.vision/api/v3/klines?symbol=BTCUSDT&interval=30m&limit=300",
-      "capturedAt": "2026-11-04T10:04:27.576203+01:00",
-      "snapshot": "10-00"
+      "capturedAt": "2026-11-04T16:00:29.362836+01:00",
+      "snapshot": "16-00"
     },
     {
       "date": "2026-11-04",
       "coin": "XRP",
-      "price": 1.2789,
+      "price": 1.3149,
       "trend": "Höheres Hoch / höheres Tief",
       "support": "S1 1,25087 / S2 1,22503",
       "resistance": "R1 1,29697 / R2 1,31723",
@@ -1323,13 +1323,13 @@
       "dominance": null,
       "previousClose": 1.2767,
       "source": "https://data-api.binance.vision/api/v3/klines?symbol=XRPUSDT&interval=30m&limit=300",
-      "capturedAt": "2026-11-04T10:04:31.353523+01:00",
-      "snapshot": "10-00"
+      "capturedAt": "2026-11-04T16:00:33.959966+01:00",
+      "snapshot": "16-00"
     }
   ],
   "dailyStatus": {
-    "capturedAt": "2026-11-04T10:04:23.765944+01:00",
-    "note": "Binance Spot · 04.11.2026 10:04 Uhr Europe/Berlin; echte Kerzen und Pivot-Szenarien des abgeschlossenen UTC-Vortags. Keine Heatmap.",
+    "capturedAt": "2026-11-04T16:00:24.727887+01:00",
+    "note": "Binance Spot · 04.11.2026 16:00 Uhr Europe/Berlin; echte Kerzen und Pivot-Szenarien des abgeschlossenen UTC-Vortags. Keine Heatmap.",
     "sources": [
       "https://data-api.binance.vision/api/v3/klines?symbol=BTCUSDT&interval=30m&limit=300",
       "https://data-api.binance.vision/api/v3/klines?symbol=XRPUSDT&interval=30m&limit=300"
