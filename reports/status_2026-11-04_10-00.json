@@ -1,0 +1,16 @@
+{
+  "date": "2026-11-04",
+  "scheduled_snapshot": "10:00",
+  "timezone": "Europe/Berlin",
+  "status": "data_unverified_not_published",
+  "reason": "Binance Spot API candles could not be retrieved and independently verified in this execution; no invented snapshot",
+  "attempted_at_local": "2026-11-04 10:03",
+  "btc_usdt": null,
+  "xrp_usdt": null,
+  "pivot_basis_utc": "2026-11-03",
+  "previous_snapshots_preserved": true,
+  "source_urls": [
+    "https://data-api.binance.vision/api/v3/klines?symbol=BTCUSDT&interval=30m&limit=300",
+    "https://data-api.binance.vision/api/v3/klines?symbol=XRPUSDT&interval=30m&limit=300"
+  ]
+}
