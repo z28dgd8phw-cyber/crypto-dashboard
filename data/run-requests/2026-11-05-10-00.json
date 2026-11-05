@@ -1,0 +1,6 @@
+{
+  "date": "2026-11-05",
+  "slot": "10-00",
+  "requested_at": "2026-11-05T10:03:42+01:00",
+  "note": "Run publisher with actual fetch timestamp; preserve historical snapshots."
+}
