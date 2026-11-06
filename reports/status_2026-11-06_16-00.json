@@ -1,0 +1,19 @@
+{
+  "date": "2026-11-06",
+  "scheduled_snapshot": "16:00",
+  "timezone": "Europe/Berlin",
+  "status": "not_published_missing_verified_market_data",
+  "attempted_at_local": "2026-11-06 16:03:54 +01:00",
+  "sources_attempted": [
+    "Binance Spot BTCUSDT/XRPUSDT",
+    "Binance US",
+    "Kraken OHLC"
+  ],
+  "reason": "Live OHLC API access unavailable; no verifiable multi-timeframe candles or UTC prior-day HLC. No fabricated market data.",
+  "dashboard_updated": false,
+  "charts_updated": false,
+  "journal_updated": false,
+  "pages_deploy_verified": false,
+  "existing_snapshots_preserved": true,
+  "automatic_schedule_unchanged": true
+}
