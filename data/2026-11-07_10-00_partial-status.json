@@ -1,0 +1,41 @@
+{
+  "date": "2026-11-07",
+  "slot": "10:00",
+  "status": "partial_daily_pivots_only",
+  "market_data": "intraday_ohlcv_unavailable",
+  "source": "ChartExchange Binance historical daily OHLC",
+  "source_urls": {
+    "BTC": "https://chartexchange.com/symbol/crypto-btcusdt/historical/?exchange=binance",
+    "XRP": "https://chartexchange.com/symbol/crypto-xrpusdt/historical/?exchange=binance"
+  },
+  "reference_day_utc": "2026-11-06",
+  "BTCUSDT": {
+    "prior_utc": {
+      "high": 76416.24,
+      "low": 74888,
+      "close": 75844
+    },
+    "pivot": {
+      "S2": "74187.84",
+      "S1": "75015.92",
+      "P": "75716.08",
+      "R1": "76544.16",
+      "R2": "77244.32"
+    }
+  },
+  "XRPUSDT": {
+    "prior_utc": {
+      "high": 1.2248,
+      "low": 1.1403,
+      "close": 1.1789
+    },
+    "pivot": {
+      "S2": "1.09683",
+      "S1": "1.13787",
+      "P": "1.18133",
+      "R1": "1.22237",
+      "R2": "1.26583"
+    }
+  },
+  "notes": "Not a 10:00 market snapshot. No validated current 15m/30m/1h/4h candles; no chart or journal update. Previous dashboard unchanged."
+}
