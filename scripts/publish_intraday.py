@@ -383,7 +383,7 @@ def main():
         # Remove any previous generated chart section before adding current version.
         s=re.sub(r'<section class="section"><div class="section-head"><div><h2>(?:BTC|XRP) · 30-Minuten-Zielzonen</h2>.*?</section>','',s,flags=re.S)
         s=re.sub(r'<section class="section card"><h2>Intraday-Journal · 10 und 16 Uhr</h2>.*?</section>','',s,flags=re.S)
-        s=re.sub(r'<span class="tag">Stand: .*?</span>',f'<span class="tag">Stand: {DISPLAY} · {LOCAL.strftime("%H:%M")} Uhr</span>',s,count=1,flags=re.S)
+        s=re.sub(r'<span class="tag">(?:Stand:|Letzter verifizierter Snapshot:) .*?</span>',f'<span class="tag">Stand: {DISPLAY} · {LOCAL.strftime("%H:%M")} Uhr</span>',s,count=1,flags=re.S)
         if name=="index.html":
             s=re.sub(r'<section class="hero">.*?</section>','',s,count=1,flags=re.S)
             s=s.replace('<main class="shell">','<main class="shell">'+top+charts+intraday,1)
