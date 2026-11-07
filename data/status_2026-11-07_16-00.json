@@ -1,0 +1,25 @@
+{
+  "date": "2026-11-07",
+  "slot": "16:00",
+  "timezone": "Europe/Berlin",
+  "checked_at": "2026-11-07T16:01:35+01:00",
+  "status": "market_data_unverified",
+  "published_market_report": false,
+  "reason": "No independently verifiable current intraday OHLC candles for both BTCUSDT and XRPUSDT; no 16:00 prices fabricated.",
+  "coins": {
+    "BTCUSDT": {
+      "price": null,
+      "market_structure": null
+    },
+    "XRPUSDT": {
+      "price": null,
+      "market_structure": null
+    }
+  },
+  "pivot_basis_utc_date": "2026-11-06",
+  "pivot_reference_only": true,
+  "previous_verified_snapshot": "2026-11-07T10:00:00+01:00",
+  "journal_updated": false,
+  "heatmaps_created": false,
+  "notes": "Existing 10:00 report and historical entries retained. Download files unchanged."
+}
