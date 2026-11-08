@@ -1,0 +1,17 @@
+{
+  "date": "2026-11-08",
+  "scheduled_snapshot": "10:00",
+  "timezone": "Europe/Berlin",
+  "status": "market_data_unavailable",
+  "verified": false,
+  "reason": "Direct Binance and Kraken OHLC API access unavailable in execution environment; no current verified multi-timeframe candles.",
+  "sources_attempted": [
+    "https://data-api.binance.vision/api/v3/klines",
+    "https://api.kraken.com/0/public/OHLC"
+  ],
+  "published_data": false,
+  "charts_updated": false,
+  "journal_updated": false,
+  "downloads_updated": false,
+  "preserved_existing_snapshots": true
+}
