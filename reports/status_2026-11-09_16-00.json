@@ -1,0 +1,16 @@
+{
+  "date": "2026-11-09",
+  "scheduled_snapshot": "16:00",
+  "run_started_local": "2026-11-09T16:17:33+01:00",
+  "status": "market_data_unavailable",
+  "publication": "status_only",
+  "sources_attempted": [
+    "Binance Spot API",
+    "Bybit Spot API",
+    "KuCoin Spot API"
+  ],
+  "error": "DNS resolution failed from execution environment; no authenticated 16:00 candle data",
+  "preserved_previous_snapshot": true,
+  "comparison_to_10": "not_calculable",
+  "notes": "No fabricated prices; dashboard and journal untouched; retry on next run."
+}
