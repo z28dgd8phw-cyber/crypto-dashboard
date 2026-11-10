@@ -1,0 +1,7 @@
+{
+  "date": "2026-11-10",
+  "scheduled_local_time": "10:00",
+  "timezone": "Europe/Berlin",
+  "purpose": "Trigger existing GitHub Actions publisher to fetch and verify fresh BTC/XRP data, render charts and deploy; not a market snapshot.",
+  "requested_at_approx": "2026-11-10T10:03:00+01:00"
+}
