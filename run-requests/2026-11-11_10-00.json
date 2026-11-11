@@ -1,0 +1,31 @@
+{
+  "date": "2026-11-11",
+  "scheduled_local": "10:00",
+  "timezone": "Europe/Berlin",
+  "status": "requested_not_verified",
+  "requested_at_local": "2026-11-11T09:57:28+01:00",
+  "coins": [
+    "BTCUSDT",
+    "XRPUSDT"
+  ],
+  "timeframes": [
+    "15m",
+    "30m",
+    "1h",
+    "4h",
+    "1d"
+  ],
+  "focus": "30m",
+  "pivot_source": "previous completed UTC day",
+  "preserve_history": true,
+  "do_not_backdate": true,
+  "heatmaps": "archive_only",
+  "publish_priority": [
+    "html",
+    "svg",
+    "json",
+    "journal",
+    "pdf",
+    "xlsx"
+  ]
+}
