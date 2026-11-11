@@ -5,9 +5,9 @@ on:
     branches: ["main"]
   workflow_dispatch:
   schedule:
-    # GitHub cron is UTC. Both CET and CEST slots are covered;
-    # the publisher selects 10:00 or 16:00 Europe/Berlin and skips duplicates.
-    - cron: "0 8,9,14,15 * * *"
+    # Leave a buffer after each reporting window opens and avoid the hour boundary.
+    - cron: "5 10,16 * * *"
+      timezone: "Europe/Berlin"
 
 permissions:
   contents: write
@@ -62,3 +62,24 @@ jobs:
       - name: Deploy
         id: deployment
         uses: actions/deploy-pages@v4
+      - name: Verify the public Pages content
+        env:
+          PAGE_URL: ${{ steps.deployment.outputs.page_url }}
+        run: |
+          published=$(mktemp)
+          trap 'rm -f "$published"' EXIT
+          for file in index.html btc.html xrp.html journal.html archiv.html; do
+            for attempt in {1..12}; do
+              if curl --fail --silent --show-error --max-time 15 \
+                "${PAGE_URL%/}/$file?verify=$GITHUB_RUN_ID-$GITHUB_RUN_ATTEMPT-$attempt" \
+                --output "$published" && cmp -s "$file" "$published"; then
+                echo "Verified public $file"
+                break
+              fi
+              if [ "$attempt" = 12 ]; then
+                echo "::error::Public Pages content does not match $file"
+                exit 1
+              fi
+              sleep 5
+            done
+          done
