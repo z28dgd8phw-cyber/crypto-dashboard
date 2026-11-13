@@ -1,0 +1,6 @@
+{
+  "requested_slot": "2026-11-13 10:00 Europe/Berlin",
+  "requested_at": "2026-11-13T09:59:49+01:00",
+  "instruction": "Publish only freshly verified BTC/USDT XRP/USDT 15m 30m 1h 4h daily, prior completed UTC daily pivot, preserve journal and both snapshots; do not fabricate prices",
+  "source": "scheduled BTC/XRP report"
+}
