@@ -1,0 +1,51 @@
+{
+  "date": "2026-11-16",
+  "slot": "16:00",
+  "timezone": "Europe/Berlin",
+  "requested_at": "2026-11-16T16:33:48+01:00",
+  "status": "pending_verified_market_data_and_publication",
+  "coins": [
+    "BTC/USDT",
+    "XRP/USDT"
+  ],
+  "source_priority": [
+    "Kraken spot OHLC and ticker",
+    "Binance spot data-api"
+  ],
+  "timeframes": [
+    "15m",
+    "30m",
+    "1h",
+    "4h",
+    "1d"
+  ],
+  "primary_timeframe": "30m",
+  "pivot_source": "completed UTC day 2026-11-15",
+  "pivot_formula": {
+    "P": "(H+L+C)/3",
+    "R1": "2*P-L",
+    "S1": "2*P-H",
+    "R2": "P+(H-L)",
+    "S2": "P-(H-L)"
+  },
+  "zones": {
+    "long": "S1..P",
+    "neutral": "P..R1",
+    "short": "R1..R2",
+    "breakout": "confirmed close > R1; target R2",
+    "breakdown": "confirmed close < S1; target S2"
+  },
+  "requirements": [
+    "Fetch actual live data and record exchange, pair and exact retrieved_at timestamp",
+    "Never represent 16:33 data as 16:00 historical price",
+    "Preserve 10:00 and all historical snapshots",
+    "Append journal with comparisons to previous snapshot",
+    "Create labeled filled boxes in both 30m SVG charts",
+    "Describe market structure support resistance triggers confirmation invalidation stop and targets for each timeframe",
+    "Update Heute BTC XRP Journal Historie navigation without erasing historical sections",
+    "No new liquidation heatmaps; old heatmaps archive only",
+    "Publish HTML SVG JSON and journal even if PDF XLSX generation fails",
+    "Verify GitHub Pages deploy and retry once if transient artifact failure",
+    "Do not mark published until verified"
+  ]
+}
