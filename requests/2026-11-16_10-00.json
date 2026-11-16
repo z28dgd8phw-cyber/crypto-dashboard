@@ -1,0 +1,8 @@
+{
+  "date": "2026-11-16",
+  "snapshot": "10:00",
+  "timezone": "Europe/Berlin",
+  "requested_at": "2026-11-16T10:40:26+01:00",
+  "status": "requested_not_published",
+  "instructions": "Fetch actual BTCUSDT and XRPUSDT candles with source and retrieval timestamp; mark as delayed 10:00 snapshot; compute UTC prior-day pivots and all 5 timeframes; preserve journal, history, 16:00 snapshots; generate SVG 30m zones; publish and verify Pages; PDF/XLSX optional; no new heatmaps."
+}
