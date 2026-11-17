@@ -1,0 +1,51 @@
+{
+  "date": "2026-11-17",
+  "slot": "10:00",
+  "timezone": "Europe/Berlin",
+  "requested_at": "2026-11-17T10:00:03+01:00",
+  "status": "pending_verified_market_data_and_publication",
+  "coins": [
+    "BTC/USDT",
+    "XRP/USDT"
+  ],
+  "source_priority": [
+    "Binance Spot data-api.binance.vision",
+    "Kraken spot OHLC fallback"
+  ],
+  "timeframes": [
+    "15m",
+    "30m",
+    "1h",
+    "4h",
+    "1d"
+  ],
+  "primary_timeframe": "30m",
+  "pivot_source": "completed UTC day 2026-11-16",
+  "pivot_formula": {
+    "P": "(H+L+C)/3",
+    "R1": "2*P-L",
+    "S1": "2*P-H",
+    "R2": "P+(H-L)",
+    "S2": "P-(H-L)"
+  },
+  "zones": {
+    "long": "S1..P",
+    "neutral": "P..R1",
+    "short": "R1..R2",
+    "breakout": "confirmed 30m close above R1 and retest; target R2",
+    "breakdown": "confirmed 30m close below S1 and retest; target S2"
+  },
+  "requirements": [
+    "Fetch verified exchange market data at or after 10:00 Europe/Berlin; record exact retrieval timestamps and source",
+    "Never fabricate historical 10:00 price; mark delayed retrieval as catch-up",
+    "Keep 10:00 and 16:00 snapshots separate and compare on 16:00",
+    "Preserve previous journal history and archives unchanged",
+    "Publish filled labeled zone boxes in current BTC and XRP 30m SVG charts",
+    "For each coin include market structure, support, resistance, long neutral short zones, breakout breakdown triggers confirmations invalidations stops and targets across 15m 30m 1h 4h daily",
+    "Maintain navigation Heute BTC XRP Journal Historie",
+    "No new liquidation heatmaps; old heatmaps only in archive",
+    "Publish HTML SVG JSON journal even if PDF XLSX fail",
+    "Check GitHub Pages deploy and retry once for transient artifact failures",
+    "Do not mark report as published before verified deployment"
+  ]
+}
