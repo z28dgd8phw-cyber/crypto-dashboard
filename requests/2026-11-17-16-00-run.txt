@@ -1,0 +1,1 @@
+BTC/XRP 16:00 Europe/Berlin, 2026-11-17. Execute existing .github/workflows/pages.yml publisher on GitHub runner; fetch live Binance Spot OHLC after 16:00 CET, preserve 10:00 and all history, publish charts/journal, deploy Pages. This file is a trigger only, not a completed report.
