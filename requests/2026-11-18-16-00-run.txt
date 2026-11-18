@@ -1,0 +1,1 @@
+BTC/XRP 2026-11-18 16:00 Europe/Berlin. Execute existing publisher; wait until 16:00 CET, obtain live Binance Spot data, preserve morning and prior snapshots, publish and deploy. Trigger only.
