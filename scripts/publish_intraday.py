@@ -19,6 +19,11 @@ TZ=ZoneInfo("Europe/Berlin")
 UTC=dt.timezone.utc
 NOW=dt.datetime.now(UTC)
 LOCAL=NOW.astimezone(TZ)
+if (LOCAL.hour, LOCAL.minute) >= (9, 55) and LOCAL.hour < 10 or (LOCAL.hour, LOCAL.minute) >= (15, 55) and LOCAL.hour < 16:
+    target=LOCAL.replace(hour=10 if LOCAL.hour==9 else 16,minute=0,second=0,microsecond=0)
+    time.sleep(max(0,(target-LOCAL).total_seconds())+1)
+    NOW=dt.datetime.now(UTC)
+    LOCAL=NOW.astimezone(TZ)
 DATE=LOCAL.date().isoformat()
 DISPLAY=LOCAL.strftime("%d.%m.%Y")
 SLOT="16-00" if LOCAL.hour>=16 else "10-00" if LOCAL.hour>=10 else None
@@ -43,7 +48,7 @@ def get_klines(symbol,interval,limit=300):
                 raise ValueError("Malformed/insufficient kline response")
             if interval=="30m" and (NOW.timestamp()*1000-int(raw[-1][0]))>65*60*1000:
                 raise ValueError("Stale 30m candles")
-            return raw,base+"?"+query
+            return raw,base+"?"+query,dt.datetime.now(UTC).astimezone(TZ).isoformat()
         except Exception as e:
             errors.append(f"{base}: {e}")
     raise RuntimeError("Could not fetch live OHLC: "+"; ".join(errors))
@@ -104,9 +109,9 @@ def atr(bars,n=14):
     return statistics.mean(ranges)
 
 def market(symbol,coin):
-    candles={};sources={}
+    candles={};sources={};retrievals={}
     for interval in ("15m","30m","1h","4h","1d"):
-        candles[interval],sources[interval]=get_klines(symbol,interval,300 if interval!="1d" else 90)
+        candles[interval],sources[interval],retrievals[interval]=get_klines(symbol,interval,300 if interval!="1d" else 90)
     daily=candles["1d"]
     yesterday=(NOW.date()-dt.timedelta(days=1)).isoformat()
     prev=next((b for b in daily if dt.datetime.fromtimestamp(int(b[0])/1000,UTC).date().isoformat()==yesterday),None)
@@ -146,7 +151,7 @@ def market(symbol,coin):
     else:location="Über R2 – Breakout nur nach Retest"
     return {
         "coin":coin,"symbol":symbol,"price":price,
-        "retrieved_at":dt.datetime.now(UTC).astimezone(TZ).isoformat(),
+        "retrieved_at":retrievals["30m"],"retrievals":retrievals,
         "source":sources["30m"],"sources":sources,
         "previous_utc_date":yesterday,
         "previous_utc_candle":{"high":high,"low":low,"close":close},
