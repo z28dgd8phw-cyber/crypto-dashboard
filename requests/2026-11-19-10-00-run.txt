@@ -1,0 +1,1 @@
+Run existing Pages publisher for 2026-11-19 10:00 CET; fetch live Binance OHLC now, label actual retrieval as late, preserve all snapshots and deploy. Trigger only.
