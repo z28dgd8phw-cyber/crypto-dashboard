@@ -1893,18 +1893,54 @@
       "sma20": 1.128965,
       "dayHigh": 1.00804,
       "dayLow": 0.96375
+    },
+    {
+      "date": "2026-11-19",
+      "coin": "BTC",
+      "price": 63898.65,
+      "trend": "Höheres Hoch / höheres Tief",
+      "support": "S1 61.753,46 / S2 60.438,70",
+      "resistance": "R1 64.692,49 / R2 66.316,76",
+      "longZone": "61.753,46–63.377,73",
+      "shortZone": "64.692,49–66.316,76",
+      "neutralZone": "63.377,73–64.692,49",
+      "breakout": 64692.490000000005,
+      "breakdown": 61753.46000000001,
+      "targets": "Long R1/R2 64.692,49 / 66.316,76; Short Pivot/S1 63.377,73 / 61.753,46",
+      "clusters": "Keine Heatmap",
+      "dominance": null,
+      "previousClose": 63068.22,
+      "source": "https://data-api.binance.vision/api/v3/klines?symbol=BTCUSDT&interval=30m&limit=300",
+      "capturedAt": "2026-11-19T10:05:54.025335+01:00",
+      "snapshot": "10-00"
+    },
+    {
+      "date": "2026-11-19",
+      "coin": "XRP",
+      "price": 0.9879,
+      "trend": "Höheres Hoch / höheres Tief",
+      "support": "S1 0,94633 / S2 0,92497",
+      "resistance": "R1 0,99843 / R2 1,02917",
+      "longZone": "0,94633–0,97707",
+      "shortZone": "0,99843–1,02917",
+      "neutralZone": "0,97707–0,99843",
+      "breakout": 0.9984333333333333,
+      "breakdown": 0.9463333333333332,
+      "targets": "Long R1/R2 0,99843 / 1,02917; Short Pivot/S1 0,97707 / 0,94633",
+      "clusters": "Keine Heatmap",
+      "dominance": null,
+      "previousClose": 0.9677,
+      "source": "https://data-api.binance.vision/api/v3/klines?symbol=XRPUSDT&interval=30m&limit=300",
+      "capturedAt": "2026-11-19T10:05:57.182789+01:00",
+      "snapshot": "10-00"
     }
   ],
   "dailyStatus": {
-    "capturedAt": "2026-11-18T18:54:10+00:00",
-    "note": "Kraken Spot BTC/USDT und XRP/USDT. Abruf 18.11.2026, 19:54 Uhr Europe/Berlin; Börsenzeit bestätigt. Veränderung: aktueller letzter Handel gegen Kraken-Schlusskurs des 17.11.2026 (UTC). Trend: Kurs gegen SMA20 der abgeschlossenen UTC-Tage. Klassische Tagespivots: P=(Vortagshoch+Vortagstief+Vortagsschluss)/3; S1=2P-H, R1=2P-L, S2=P-(H-L), R2=P+(H-L). Zonen und Ziele sind daraus abgeleitete Szenarien; keine unabhängig bestätigten Chart-Signale. Aktuelle Liquidations-Heatmap fehlt; Grafikstand 03.10.2026 bleibt separat erhalten.",
+    "capturedAt": "2026-11-19T10:05:52.715339+01:00",
+    "note": "Binance Spot · 19.11.2026 10:05 Uhr Europe/Berlin; echte Kerzen und Pivot-Szenarien des abgeschlossenen UTC-Vortags. Keine Heatmap.",
     "sources": [
-      "https://api.kraken.com/0/public/Ticker?pair=XBTUSDT,XRPUSDT",
-      "https://api.kraken.com/0/public/OHLC?pair=XBTUSDT&interval=1440",
-      "https://api.kraken.com/0/public/OHLC?pair=XRPUSDT&interval=1440",
-      "https://api.kraken.com/0/public/Time",
-      "https://api.kraken.com/0/public/OHLC?pair=XBTUSDT&interval=30",
-      "https://api.kraken.com/0/public/OHLC?pair=XRPUSDT&interval=30"
+      "https://data-api.binance.vision/api/v3/klines?symbol=BTCUSDT&interval=30m&limit=300",
+      "https://data-api.binance.vision/api/v3/klines?symbol=XRPUSDT&interval=30m&limit=300"
     ]
   }
 }
