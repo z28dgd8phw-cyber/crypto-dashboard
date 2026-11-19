@@ -1,0 +1,1 @@
+Run existing Pages publisher for 2026-11-19 16:00 CET. Fetch verified live OHLC now, retain 10:00 snapshot and compare, label actual retrieval time and any delay, preserve archive, deploy; optional downloads must not block.
