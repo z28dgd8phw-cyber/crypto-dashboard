@@ -1,0 +1,1 @@
+Run existing Pages publisher for 2026-11-20 16:00 CET. Wait until 16:00 CET before retrieving verified live OHLC. Label actual retrieval time and any delay, preserve 10:00 and all archives, compare 16:00 versus 10:00, deploy; optional downloads must not block. No new heatmaps.
