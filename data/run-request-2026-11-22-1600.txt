@@ -1,0 +1,3 @@
+Requested snapshot: 2026-11-22 16:00 Europe/Berlin
+Execute existing scripts/publish_intraday.py through pages.yml push workflow.
+Use actual market-data retrieval time; preserve 10:00 snapshot and historical archive.
