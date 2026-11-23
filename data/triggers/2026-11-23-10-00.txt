@@ -1,0 +1,2 @@
+2026-11-23 10:00 Europe/Berlin BTC/XRP scheduled snapshot trigger.
+Publisher must wait until 10:00 local time; use actual retrieval timestamp, preserve prior history, and deploy Pages.
