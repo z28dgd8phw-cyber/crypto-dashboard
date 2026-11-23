@@ -1,0 +1,1 @@
+Scheduled 2026-11-23 16:00 Europe/Berlin BTC/USDT and XRP/USDT publisher. Fetch after 16:00 local; preserve 10:00 snapshot and all archive entries. Verify GitHub Pages deployment. This file is only a workflow trigger, not a published market report.
