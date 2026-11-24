@@ -1,0 +1,1 @@
+Requested 2026-11-24 10:02 Europe/Berlin. Publish verified BTC/USDT and XRP/USDT 10:00 snapshot using actual retrieval times, label delayed capture honestly; preserve all previous snapshots and archive. Run existing intraday publisher and Pages deployment. No new heatmaps. Downloads optional, HTML/SVG/JSON and journal mandatory.
