@@ -1,0 +1,1 @@
+Requested 2026-11-25 10:00 Europe/Berlin. Run existing intraday publisher now for BTC/USDT and XRP/USDT, actual retrieval timestamps, five timeframes, 30m filled pivot zones from UTC previous day, preserve all snapshots and history, journal and Pages deployment. No new heatmaps. PDF/XLSX optional, HTML/SVG/JSON mandatory.
