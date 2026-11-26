@@ -2201,8 +2201,8 @@
     {
       "date": "2026-11-26",
       "coin": "BTC",
-      "price": 60867.29,
-      "trend": "Tieferes Hoch / tieferes Tief",
+      "price": 60516.4,
+      "trend": "Seitwärts / gemischte Struktur",
       "support": "S1 58.316,26 / S2 56.174,50",
       "resistance": "R1 61.583,89 / R2 62.709,76",
       "longZone": "58.316,26–59.442,13",
@@ -2215,14 +2215,14 @@
       "dominance": null,
       "previousClose": 60458.01,
       "source": "https://data-api.binance.vision/api/v3/klines?symbol=BTCUSDT&interval=30m&limit=300",
-      "capturedAt": "2026-11-26T10:01:33.922438+01:00",
-      "snapshot": "10-00"
+      "capturedAt": "2026-11-26T16:03:06.807534+01:00",
+      "snapshot": "16-00"
     },
     {
       "date": "2026-11-26",
       "coin": "XRP",
-      "price": 0.9559,
-      "trend": "Höheres Hoch / höheres Tief",
+      "price": 0.9444,
+      "trend": "Seitwärts / gemischte Struktur",
       "support": "S1 0,90157 / S2 0,86523",
       "resistance": "R1 0,96157 / R2 0,98523",
       "longZone": "0,90157–0,92523",
@@ -2235,13 +2235,13 @@
       "dominance": null,
       "previousClose": 0.9379,
       "source": "https://data-api.binance.vision/api/v3/klines?symbol=XRPUSDT&interval=30m&limit=300",
-      "capturedAt": "2026-11-26T10:01:38.597856+01:00",
-      "snapshot": "10-00"
+      "capturedAt": "2026-11-26T16:03:10.575038+01:00",
+      "snapshot": "16-00"
     }
   ],
   "dailyStatus": {
-    "capturedAt": "2026-11-26T10:01:31.678482+01:00",
-    "note": "Binance Spot · 26.11.2026 10:01 Uhr Europe/Berlin; echte Kerzen und Pivot-Szenarien des abgeschlossenen UTC-Vortags. Keine Heatmap.",
+    "capturedAt": "2026-11-26T16:03:05.236142+01:00",
+    "note": "Binance Spot · 26.11.2026 16:03 Uhr Europe/Berlin; echte Kerzen und Pivot-Szenarien des abgeschlossenen UTC-Vortags. Keine Heatmap.",
     "sources": [
       "https://data-api.binance.vision/api/v3/klines?symbol=BTCUSDT&interval=30m&limit=300",
       "https://data-api.binance.vision/api/v3/klines?symbol=XRPUSDT&interval=30m&limit=300"
