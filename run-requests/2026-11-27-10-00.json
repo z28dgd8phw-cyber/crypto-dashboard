@@ -1,0 +1,6 @@
+{
+  "date": "2026-11-27",
+  "slot": "10-00",
+  "requested_at": "2026-11-27T09:55:32+01:00",
+  "task": "Publish verified BTC/XRP intraday snapshot using existing publisher; wait until 10:00 CET before market data retrieval; preserve morning and archive; deploy Pages"
+}
