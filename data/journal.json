@@ -2277,11 +2277,51 @@
       "source": "https://data-api.binance.vision/api/v3/klines?symbol=XRPUSDT&interval=30m&limit=300",
       "capturedAt": "2026-11-27T16:01:12.850393+01:00",
       "snapshot": "16-00"
+    },
+    {
+      "date": "2026-11-28",
+      "coin": "BTC",
+      "price": 59574.61,
+      "trend": "Tieferes Hoch / tieferes Tief",
+      "support": "S1 58.394,01 / S2 56.864,92",
+      "resistance": "R1 61.850,55 / R2 63.778,00",
+      "longZone": "58.394,01–60.321,46",
+      "shortZone": "61.850,55–63.778,00",
+      "neutralZone": "60.321,46–61.850,55",
+      "breakout": 61850.549999999996,
+      "breakdown": 58394.009999999995,
+      "targets": "Long R1/R2 61.850,55 / 63.778,00; Short Pivot/S1 60.321,46 / 58.394,01",
+      "clusters": "Keine Heatmap",
+      "dominance": null,
+      "previousClose": 59923.1,
+      "source": "https://data-api.binance.vision/api/v3/klines?symbol=BTCUSDT&interval=30m&limit=300",
+      "capturedAt": "2026-11-28T10:00:04.016642+01:00",
+      "snapshot": "10-00"
+    },
+    {
+      "date": "2026-11-28",
+      "coin": "XRP",
+      "price": 0.9399,
+      "trend": "Tieferes Hoch / tieferes Tief",
+      "support": "S1 0,92427 / S2 0,89963",
+      "resistance": "R1 0,98047 / R2 1,01203",
+      "longZone": "0,92427–0,95583",
+      "shortZone": "0,98047–1,01203",
+      "neutralZone": "0,95583–0,98047",
+      "breakout": 0.9804666666666668,
+      "breakdown": 0.9242666666666668,
+      "targets": "Long R1/R2 0,98047 / 1,01203; Short Pivot/S1 0,95583 / 0,92427",
+      "clusters": "Keine Heatmap",
+      "dominance": null,
+      "previousClose": 0.9489,
+      "source": "https://data-api.binance.vision/api/v3/klines?symbol=XRPUSDT&interval=30m&limit=300",
+      "capturedAt": "2026-11-28T10:00:10.581408+01:00",
+      "snapshot": "10-00"
     }
   ],
   "dailyStatus": {
-    "capturedAt": "2026-11-27T16:01:06.277697+01:00",
-    "note": "Binance Spot · 27.11.2026 16:01 Uhr Europe/Berlin; echte Kerzen und Pivot-Szenarien des abgeschlossenen UTC-Vortags. Keine Heatmap.",
+    "capturedAt": "2026-11-28T10:00:01.000127+01:00",
+    "note": "Binance Spot · 28.11.2026 10:00 Uhr Europe/Berlin; echte Kerzen und Pivot-Szenarien des abgeschlossenen UTC-Vortags. Keine Heatmap.",
     "sources": [
       "https://data-api.binance.vision/api/v3/klines?symbol=BTCUSDT&interval=30m&limit=300",
       "https://data-api.binance.vision/api/v3/klines?symbol=XRPUSDT&interval=30m&limit=300"
